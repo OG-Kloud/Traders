@@ -1,0 +1,72 @@
+package net.kloudspace.trades.util;
+
+import net.kloudspace.trades.item.ItemReg;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+
+public class CostToItemStack {
+	
+	private static ItemStack stack;
+	private static int re;
+	private int recalculate;
+	
+	public static void getPaymentStack(int num, int size) {
+		int costPer1 = CostMap.stacks.get(stack).intValue();
+		int price = num * costPer1;
+		if(price <= 64) {
+			stack = new ItemStack(ItemReg.itemCoin,price);
+		}
+		else if(price > 64 && price <=2048) { 
+		stack = new ItemStack(ItemReg.itemCoin4,price/32);
+		re = price-(price/32)*32;
+		}
+		else if(price > 2048 && price <= 4096) {
+			stack = new ItemStack(ItemReg.itemCoin3,price/64);
+			re = (price- ((price/64)*64));
+		}
+		else if(price > 4096 && price <= 8192) {
+			stack = new ItemStack(ItemReg.itemCoin4,price/128);
+			re = (price - ((price/128)*128));
+		}
+		else {
+			stack = new ItemStack(ItemReg.itemCoin,price);
+		}
+	}
+	
+	public static void getValueStack(int price) {
+		if(price >= 64) {
+			stack = new ItemStack(ItemReg.itemCoin,price*(3/4));
+		}
+		else if(price > 64 && price <=2048) { 
+		stack = new ItemStack(ItemReg.itemCoin4,((price/32)*(3/4)));
+		re = price-(price/32);
+		}
+		else if(price > 2048 && price <= 4096) {
+			stack = new ItemStack(ItemReg.itemCoin3,price/64*(3/4));
+			re = (price- ((price/64)*64));
+		}
+		else if(price > 4096 && price <= 8192) {
+			stack = new ItemStack(ItemReg.itemCoin5,price/128*(3/4));
+			re = (price - ((price/128)*128));
+		}
+		else {
+			stack = new ItemStack(ItemReg.itemCoin,price*(3/4));
+		}
+	}
+	
+	public static ItemStack getPrice(int i) {
+		getValueStack(i);
+		return stack;
+	}
+	public static ItemStack getCost(int i, int size) {
+		getPaymentStack(i, size);
+		return stack;
+	}
+	public static ItemStack getsecondCost(int i, int size) {
+		getPaymentStack(i, size);
+		int rem = re;
+		getPaymentStack(rem, size);
+		return stack;
+	}
+
+}

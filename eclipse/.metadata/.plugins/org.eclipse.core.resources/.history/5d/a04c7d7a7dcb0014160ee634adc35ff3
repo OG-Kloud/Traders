@@ -1,0 +1,93 @@
+package net.kloudspace.trades.event.handlers;
+
+import static net.kloudspace.trades.util.Stacks.chainBoots;
+import static net.kloudspace.trades.util.Stacks.chainChest;
+import static net.kloudspace.trades.util.Stacks.chainHelm;
+import static net.kloudspace.trades.util.Stacks.chainLegs;
+import static net.kloudspace.trades.util.Stacks.diamondBoots;
+import static net.kloudspace.trades.util.Stacks.diamondChest;
+import static net.kloudspace.trades.util.Stacks.diamondHelm;
+import static net.kloudspace.trades.util.Stacks.diamondLegs;
+import static net.kloudspace.trades.util.Stacks.ironBoots;
+import static net.kloudspace.trades.util.Stacks.ironChest;
+import static net.kloudspace.trades.util.Stacks.ironHelm;
+import static net.kloudspace.trades.util.Stacks.ironLegs;
+import static net.kloudspace.trades.util.Stacks.leatherBoots;
+import static net.kloudspace.trades.util.Stacks.leatherChest;
+import static net.kloudspace.trades.util.Stacks.leatherHelm;
+import static net.kloudspace.trades.util.Stacks.leatherLegs;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import cpw.mods.fml.common.registry.VillagerRegistry.IVillageTradeHandler;
+import net.kloudspace.trades.util.CostMap;
+import net.kloudspace.trades.util.CostToItemStack;
+import net.kloudspace.trades.util.Reference;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.item.ItemStack;
+import net.minecraft.village.MerchantRecipe;
+import net.minecraft.village.MerchantRecipeList;
+
+public class KloudArmor  implements IVillageTradeHandler{
+	
+	private final List<ItemStack> arm = new ArrayList<ItemStack>();
+    private final int max = 20;
+    private final int min = 3;
+	
+	public KloudArmor() {
+		super();
+		addArmor();
+	}
+	
+	public void addArmor() {
+		arm.add(leatherBoots);
+		arm.add(leatherChest);
+		arm.add(leatherHelm);
+		arm.add(leatherLegs);
+		arm.add(ironBoots);
+		arm.add(ironChest);
+		arm.add(ironHelm);
+		arm.add(ironLegs);
+		arm.add(diamondBoots);
+		arm.add(diamondChest);
+		arm.add(diamondHelm);
+		arm.add(diamondLegs);
+		arm.add(chainBoots);
+		arm.add(chainChest);
+		arm.add(chainHelm);
+		arm.add(chainLegs);
+	}
+
+	@Override
+	public void manipulateTradesForVillager(EntityVillager villager,
+			MerchantRecipeList recipeList, Random random) {
+		switch(villager.getProfession()) {
+		case 10:
+			addArmor();
+			ItemStack one = arm.get(random.nextInt(arm.size()-1));
+			ItemStack two = arm.get(random.nextInt(arm.size() - 1));
+			int stacksize = min + random.nextInt(max);
+			int stacksize2 = min + random.nextInt(max);
+            ItemStack ingredient = one.copy().splitStack(stacksize);
+            ItemStack ingredient2 = two.copy().splitStack(stacksize2);
+            int modOne = stacksize;
+            int modTwo = stacksize2;
+            int cost1 = CostMap.stacks.get(one);
+            Reference.logger.info("Stack size =" +stacksize +"Item in Stack:" + one.getItem());
+            int cost2 = CostMap.stacks.get(two);
+            int modedCost1 = cost1 * modOne;
+            int modedCost2 = cost2 * modTwo;
+            int finalCost = cost1 + cost2;
+            ItemStack result = CostToItemStack.getPrice(finalCost);
+            if(ingredient.stackSize < 10 && ingredient2 != null) {
+            	recipeList.addToListWithCheck(new MerchantRecipe(ingredient,ingredient2,result));
+            }
+            else {
+            recipeList.addToListWithCheck(new MerchantRecipe(ingredient, result));
+            }
+		}		
+	}
+
+}

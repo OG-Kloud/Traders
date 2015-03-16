@@ -1,0 +1,123 @@
+package net.kloudspace.trades.event.handlers;
+
+import java.util.ArrayList;
+import java.util.List;
+import static net.kloudspace.trades.util.Stacks.*;
+import net.minecraft.item.ItemStack;
+import cpw.mods.fml.common.registry.VillagerRegistry.IVillageTradeHandler;
+
+public class Klouds implements IVillageTradeHandler{
+	
+	private final List<ItemStack> foods = new ArrayList<ItemStack>();
+	private final List<ItemStack> tools = new ArrayList<ItemStack>();
+	private final List<ItemStack> arm = new ArrayList<ItemStack>();
+	private final List<ItemStack> drops = new ArrayList<ItemStack>();
+	private final List<ItemStack> mat = new ArrayList<ItemStack>();
+	public Klouds() {
+		super();
+		addFood();
+		addTools();
+		addArmor();
+		addDrops();
+		addMaterials();
+	}
+	
+	public void addFood() {
+		foods.add(bread);
+		foods.add(beefs);
+		foods.add(baked);
+		foods.add(apples);
+		foods.add(cake);
+		foods.add(carrot);
+		foods.add(chicken);
+		foods.add(cookedBeef);
+		foods.add(cookedChicken);
+		foods.add(cookedFish);
+		foods.add(cookedPorkchops);
+		foods.add(cookies);
+		foods.add(fish);
+		foods.add(melonslices);
+		foods.add(mushroomStew);
+		foods.add(porkchops);
+		foods.add(potatoes);
+		foods.add(pumpkinpie);
+	}
+	public void addTools() {
+		tools.add(arrows);
+		tools.add(woodAxe);
+		tools.add(woodHoe);
+		tools.add(woodPick);
+		tools.add(woodSpade);
+		tools.add(woodSword);
+		tools.add(stoneAxe);
+		tools.add(stoneHoe);
+		tools.add(stonePick);
+		tools.add(stoneSpade);
+		tools.add(stoneSword);
+		tools.add(ironAxe);
+		tools.add(ironHoe);
+		tools.add(ironPick);
+		tools.add(ironSpade);
+		tools.add(ironSword);
+		tools.add(diamondAxe);
+		tools.add(diamondHoe);
+		tools.add(diamondPick);
+		tools.add(diamondSpade);
+		tools.add(diamondSword);
+	}
+	public void addArmor() {
+		arm.add(leatherBoots);
+		arm.add(leatherChest);
+		arm.add(leatherHelm);
+		arm.add(leatherLegs);
+		arm.add(ironBoots);
+		arm.add(ironChest);
+		arm.add(ironHelm);
+		arm.add(ironLegs);
+		arm.add(diamondBoots);
+		arm.add(diamondChest);
+		arm.add(diamondHelm);
+		arm.add(diamondLegs);
+		arm.add(chainBoots);
+		arm.add(chainChest);
+		arm.add(chainHelm);
+		arm.add(chainLegs);
+	}
+	public void addDrops() {
+		drops.add(rottenFlesh);
+		drops.add(string);
+		drops.add(spiderEyes);
+		drops.add(ender);
+		drops.add(gunpowder);
+		drops.add(bones);
+		drops.add(leatherDrop);
+		drops.add(blazeRod);
+		drops.add(blazePowder);
+		drops.add(magma);
+		drops.add(witherBone);
+		drops.add(witherSkull);
+		drops.add(neatherStar);
+	}
+	public void addMaterials() {
+		mat.add(diamonds);
+		mat.add(iron);
+		mat.add(gold);
+		mat.add(emeralds);
+		mat.add(coal);
+		mat.add(redstone);
+		mat.add(glowstonedust);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+}

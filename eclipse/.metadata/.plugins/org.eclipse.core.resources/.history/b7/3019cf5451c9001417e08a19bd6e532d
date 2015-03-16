@@ -1,0 +1,439 @@
+package net.kloudspace.trades.event.handlers;
+/*
+import static net.kloudspace.trades.util.Stacks.apples;
+import static net.kloudspace.trades.util.Stacks.anvils;
+import static net.kloudspace.trades.util.Stacks.arrows;
+import static net.kloudspace.trades.util.Stacks.baked;
+import static net.kloudspace.trades.util.Stacks.beefs;
+import static net.kloudspace.trades.util.Stacks.blazePowder;
+import static net.kloudspace.trades.util.Stacks.blazeRod;
+import static net.kloudspace.trades.util.Stacks.bones;
+import static net.kloudspace.trades.util.Stacks.bookshelf;
+import static net.kloudspace.trades.util.Stacks.bread;
+import static net.kloudspace.trades.util.Stacks.brewer;
+import static net.kloudspace.trades.util.Stacks.cactus;
+import static net.kloudspace.trades.util.Stacks.cake;
+import static net.kloudspace.trades.util.Stacks.carrot;
+import static net.kloudspace.trades.util.Stacks.cauldron;
+import static net.kloudspace.trades.util.Stacks.chainBoots;
+import static net.kloudspace.trades.util.Stacks.chainChest;
+import static net.kloudspace.trades.util.Stacks.chainHelm;
+import static net.kloudspace.trades.util.Stacks.chainLegs;
+import static net.kloudspace.trades.util.Stacks.chest;
+import static net.kloudspace.trades.util.Stacks.chicken;
+import static net.kloudspace.trades.util.Stacks.coal;
+import static net.kloudspace.trades.util.Stacks.cobble;
+import static net.kloudspace.trades.util.Stacks.cookedBeef;
+import static net.kloudspace.trades.util.Stacks.cookedChicken;
+import static net.kloudspace.trades.util.Stacks.cookedFish;
+import static net.kloudspace.trades.util.Stacks.cookedPorckchops;
+import static net.kloudspace.trades.util.Stacks.cookies;
+import static net.kloudspace.trades.util.Stacks.diamondAxe;
+import static net.kloudspace.trades.util.Stacks.diamondBoots;
+import static net.kloudspace.trades.util.Stacks.diamondChest;
+import static net.kloudspace.trades.util.Stacks.diamondHelm;
+import static net.kloudspace.trades.util.Stacks.diamondHoe;
+import static net.kloudspace.trades.util.Stacks.diamondLegs;
+import static net.kloudspace.trades.util.Stacks.diamondPick;
+import static net.kloudspace.trades.util.Stacks.diamonds;
+import static net.kloudspace.trades.util.Stacks.diamondSpade;
+import static net.kloudspace.trades.util.Stacks.diamondSword;
+import static net.kloudspace.trades.util.Stacks.dirt;
+import static net.kloudspace.trades.util.Stacks.dispenser;
+import static net.kloudspace.trades.util.Stacks.dropper;
+import static net.kloudspace.trades.util.Stacks.eggs;
+import static net.kloudspace.trades.util.Stacks.emeralds;
+import static net.kloudspace.trades.util.Stacks.enchanter;
+import static net.kloudspace.trades.util.Stacks.ender;
+import static net.kloudspace.trades.util.Stacks.endstone;
+import static net.kloudspace.trades.util.Stacks.entportal;
+import static net.kloudspace.trades.util.Stacks.fish;
+import static net.kloudspace.trades.util.Stacks.flint;
+import static net.kloudspace.trades.util.Stacks.furnace;
+import static net.kloudspace.trades.util.Stacks.glass;
+import static net.kloudspace.trades.util.Stacks.glowstone;
+import static net.kloudspace.trades.util.Stacks.gold;
+import static net.kloudspace.trades.util.Stacks.goldBoots;
+import static net.kloudspace.trades.util.Stacks.goldChest;
+import static net.kloudspace.trades.util.Stacks.goldHelm;
+import static net.kloudspace.trades.util.Stacks.goldLegs;
+import static net.kloudspace.trades.util.Stacks.gravel;
+import static net.kloudspace.trades.util.Stacks.gunpowder;
+import static net.kloudspace.trades.util.Stacks.hay;
+import static net.kloudspace.trades.util.Stacks.hopper;
+import static net.kloudspace.trades.util.Stacks.ice;
+import static net.kloudspace.trades.util.Stacks.iron;
+import static net.kloudspace.trades.util.Stacks.ironAxe;
+import static net.kloudspace.trades.util.Stacks.ironBoots;
+import static net.kloudspace.trades.util.Stacks.ironChest;
+import static net.kloudspace.trades.util.Stacks.ironHelm;
+import static net.kloudspace.trades.util.Stacks.ironHoe;
+import static net.kloudspace.trades.util.Stacks.ironLegs;
+import static net.kloudspace.trades.util.Stacks.ironPick;
+import static net.kloudspace.trades.util.Stacks.ironSpade;
+import static net.kloudspace.trades.util.Stacks.ironSword;
+import static net.kloudspace.trades.util.Stacks.jukebox;
+import static net.kloudspace.trades.util.Stacks.leather;
+import static net.kloudspace.trades.util.Stacks.leatherBoots;
+import static net.kloudspace.trades.util.Stacks.leatherChest;
+import static net.kloudspace.trades.util.Stacks.leatherDrop;
+import static net.kloudspace.trades.util.Stacks.leatherHelm;
+import static net.kloudspace.trades.util.Stacks.leatherLegs;
+import static net.kloudspace.trades.util.Stacks.log;
+import static net.kloudspace.trades.util.Stacks.melon;
+import static net.kloudspace.trades.util.Stacks.melonslices;
+import static net.kloudspace.trades.util.Stacks.mossy;
+import static net.kloudspace.trades.util.Stacks.mushroomStew;
+import static net.kloudspace.trades.util.Stacks.neatherStar;
+import static net.kloudspace.trades.util.Stacks.obsidian;
+import static net.kloudspace.trades.util.Stacks.packedice;
+import static net.kloudspace.trades.util.Stacks.papers;
+import static net.kloudspace.trades.util.Stacks.piston;
+import static net.kloudspace.trades.util.Stacks.planks;
+import static net.kloudspace.trades.util.Stacks.porkchops;
+import static net.kloudspace.trades.util.Stacks.potatoes;
+import static net.kloudspace.trades.util.Stacks.pumpkinpie;
+import static net.kloudspace.trades.util.Stacks.pumpkins;
+import static net.kloudspace.trades.util.Stacks.quartz;
+import static net.kloudspace.trades.util.Stacks.redstonelamp;
+import static net.kloudspace.trades.util.Stacks.rottenFlesh;
+import static net.kloudspace.trades.util.Stacks.sand;
+import static net.kloudspace.trades.util.Stacks.sandstone;
+import static net.kloudspace.trades.util.Stacks.shears;
+import static net.kloudspace.trades.util.Stacks.snow;
+import static net.kloudspace.trades.util.Stacks.soulsand;
+import static net.kloudspace.trades.util.Stacks.spawnEggs;
+import static net.kloudspace.trades.util.Stacks.spiderEyes;
+import static net.kloudspace.trades.util.Stacks.sticks;
+import static net.kloudspace.trades.util.Stacks.stickypiston;
+import static net.kloudspace.trades.util.Stacks.stone;
+import static net.kloudspace.trades.util.Stacks.stoneAxe;
+import static net.kloudspace.trades.util.Stacks.stonebrick;
+import static net.kloudspace.trades.util.Stacks.stoneHoe;
+import static net.kloudspace.trades.util.Stacks.stonePick;
+import static net.kloudspace.trades.util.Stacks.stoneSpade;
+import static net.kloudspace.trades.util.Stacks.stoneSword;
+import static net.kloudspace.trades.util.Stacks.string;
+import static net.kloudspace.trades.util.Stacks.tnt;
+import static net.kloudspace.trades.util.Stacks.t;
+import static net.kloudspace.trades.util.Stacks.torch;
+import static net.kloudspace.trades.util.Stacks.wheats;
+import static net.kloudspace.trades.util.Stacks.witherBone;
+import static net.kloudspace.trades.util.Stacks.witherSkull;
+import static net.kloudspace.trades.util.Stacks.woodAxe;
+import static net.kloudspace.trades.util.Stacks.woodHoe;
+import static net.kloudspace.trades.util.Stacks.woodPick;
+import static net.kloudspace.trades.util.Stacks.woodSpade;
+import static net.kloudspace.trades.util.Stacks.woodSword;
+*/
+import java.util.Random;
+
+import net.kloudspace.trades.util.CostToItemStack;
+import net.kloudspace.trades.util.Stacks;
+import net.minecraft.block.Block;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentData;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.MathHelper;
+import net.minecraft.village.MerchantRecipe;
+import net.minecraft.village.MerchantRecipeList;
+import cpw.mods.fml.common.registry.VillagerRegistry.IVillageTradeHandler;
+
+public class TradeHandler implements IVillageTradeHandler {
+	
+	static Random random = new Random();
+	public static ItemStack stack;
+	
+	public static ItemStack apples = create(Items.apple, 1, 7);
+	public static ItemStack beefs = create(Items.beef,7,8);
+	public static ItemStack baked = create(Items.baked_potato,3,7);
+	public static ItemStack bread = create(Items.bread,7,8);
+	public static ItemStack cake = create(Items.cake,1,0);
+	public static ItemStack carrot = create(Items.carrot,7,8);
+	public static ItemStack chicken = create(Items.chicken,5,7);
+	public static ItemStack cookedBeef = create(Items.cooked_beef,3,2);
+	public static ItemStack cookedChicken = create(Items.cooked_chicken,3,3);
+	public static ItemStack cookedFish = create(Items.cooked_fished,6,6);
+	public static ItemStack potatoes = create(Items.potato,7,8);
+	public static ItemStack porkchops = create(Items.porkchop,3,6);
+	public static ItemStack cookedPorckchops = create(Items.cooked_porkchop,4,6);
+	public static ItemStack cookies = create(Items.cookie, 12,4);
+	public static ItemStack fish = create(Items.fish,3,6);
+	public static ItemStack melonslices = create(Items.melon,1,1);
+	public static ItemStack pumpkinpie = create(Items.pumpkin_pie,1,1);
+	public static ItemStack wheats = create(Items.wheat,12,5);
+	public static ItemStack mushroomStew = create(Items.mushroom_stew,1,3);
+	//Tools
+	public static ItemStack arrows = create(Items.arrow,7,9);
+	public static ItemStack woodSword = create(Items.wooden_sword,1,0);
+	public static ItemStack woodAxe = create(Items.wooden_axe,1,0);
+	public static ItemStack woodPick = create(Items.wooden_pickaxe,1,0);
+	public static ItemStack woodSpade = create(Items.wooden_shovel,1,0);
+	public static ItemStack woodHoe = create(Items.wooden_hoe,1,0);
+	public static ItemStack stoneAxe = create(Items.stone_axe,1,0);
+	public static ItemStack stonePick = create(Items.stone_pickaxe,1,0);
+	public static ItemStack stoneSpade = create(Items.stone_shovel,1,0);
+	public static ItemStack stoneHoe = create(Items.stone_hoe,1,0);
+	public static ItemStack stoneSword = create(Items.stone_sword,1,0);
+	public static ItemStack ironAxe = create(Items.iron_axe,1,0);
+	public static ItemStack ironHoe = create(Items.iron_hoe,1,0);
+	public static ItemStack ironSpade = create(Items.iron_shovel,1,0);
+	public static ItemStack ironPick = create(Items.iron_pickaxe,1,0);
+	public static ItemStack ironSword = create(Items.iron_sword,1,0);
+	public static ItemStack diamondAxe = create(Items.diamond_axe,1,0);
+	public static ItemStack diamondHoe = create(Items.diamond_hoe,1,0);
+	public static ItemStack diamondPick = create(Items.diamond_pickaxe,1,0);
+	public static ItemStack diamondSpade = create(Items.diamond_shovel,1,0);
+	public static ItemStack diamondSword = create(Items.diamond_sword,1,0);
+	public static ItemStack shears = create(Items.shears,1,0);
+	//Armor
+	public static ItemStack leatherBoots = create(Items.leather_boots,1,0);
+	public static ItemStack leatherChest = create(Items.leather_chestplate,1,0);
+	public static ItemStack leatherHelm = create(Items.leather_helmet,1,0);
+	public static ItemStack leatherLegs = create(Items.leather_leggings,1,0);
+	public static ItemStack goldBoots = create(Items.golden_boots,1,0);
+	public static ItemStack goldChest = create(Items.golden_chestplate,1,0);
+	public static ItemStack goldHelm = create(Items.golden_helmet,1,0);
+	public static ItemStack goldLegs = create(Items.golden_leggings,1,0);
+	public static ItemStack ironBoots = create(Items.iron_boots,1,0);
+	public static ItemStack ironChest = create(Items.iron_chestplate,1,0);
+	public static ItemStack ironHelm = create(Items.iron_helmet,1,0);
+	public static ItemStack ironLegs = create(Items.iron_leggings,1,0);
+	public static ItemStack diamondBoots = create(Items.diamond_boots,1,0);
+	public static ItemStack diamondChest = create(Items.diamond_chestplate,1,0);
+	public static ItemStack diamondHelm = create(Items.diamond_helmet,1,0);
+	public static ItemStack diamondLegs = create(Items.diamond_leggings,1,0);
+	public static ItemStack chainBoots = create(Items.chainmail_boots,1,0);
+	public static ItemStack chainChest = create(Items.chainmail_chestplate,1,0);
+	public static ItemStack chainHelm = create(Items.chainmail_helmet,1,0);
+	public static ItemStack chainLegs = create(Items.chainmail_leggings,1,0);
+	//Mob Drops
+	public static ItemStack rottenFlesh = create(Items.rotten_flesh,7,4);
+	public static ItemStack string = create(Items.string,7,4);
+	public static ItemStack gunpowder = create(Items.gunpowder,7,4);
+	public static ItemStack bones = create(Items.bone,7,4);
+	public static ItemStack leatherDrop = create(Items.leather,7,4);
+//	public static ItemStack wools = t;
+	public static ItemStack eggs = create(Items.egg,7,4);
+	public static ItemStack blazeRod = create(Items.blaze_rod,1,10);
+	public static ItemStack blazePowder = create(Items.blaze_powder,1,10);
+	public static ItemStack ender = create(Items.ender_pearl,1,4);
+	public static ItemStack spiderEyes = create(Items.spider_eye,7,4);
+	public static ItemStack witherSkull = createMeta(Items.skull,1,10,11);
+	public static ItemStack witherBone = createMeta(Items.bone,1,10,1);
+	//Materials
+	public static ItemStack diamonds = create(Items.diamond,1,5);
+	public static ItemStack iron = create(Items.iron_ingot,1,5);
+	public static ItemStack gold = create(Items.gold_ingot,1,5);
+	public static ItemStack emeralds = create(Items.emerald,1,5);
+	public static ItemStack coal = create(Items.coal,1,5);
+	public static ItemStack sticks = create(Items.stick,10,10);
+	public static ItemStack neatherStar = create(Items.nether_star,1,0);
+	public static ItemStack flint = create(Items.flint,10,5);
+	public static ItemStack leather = create(Items.leather,7,11);
+	public static ItemStack papers = create(Items.paper,3,5);
+	public static ItemStack spawnEggs = createMeta(Items.spawn_egg,1,1,15);
+	//blocks
+	public static ItemStack anvils = blockStack(Blocks.anvil,1,0);
+	public static ItemStack bookshelf = blockStack(Blocks.bookshelf,1,4);
+	public static ItemStack brewer = blockStack(Blocks.brewing_stand,1,2);
+	public static ItemStack cactus = blockStack(Blocks.cactus,5,6);
+	public static ItemStack cobble = blockStack(Blocks.cobblestone,12,12);
+	public static ItemStack cauldron = blockStack(Blocks.cauldron,1,3);
+	public static ItemStack chest = blockStack(Blocks.chest,3,1);
+	public static ItemStack dirt = blockStack(Blocks.dirt,22,22);
+	public static ItemStack dispenser = blockStack(Blocks.dispenser,1,3);
+	public static ItemStack dropper = blockStack(Blocks.dropper,1,3);
+	public static ItemStack enchanter = blockStack(Blocks.enchanting_table,1,0);
+	public static ItemStack endstone = blockStack(Blocks.end_stone,3,6);
+	public static ItemStack entportal = blockStack(Blocks.end_portal_frame,1,0);
+	public static ItemStack furnace = blockStack(Blocks.furnace,6,10);
+	public static ItemStack glass = blockStack(Blocks.glass,6,3);
+	public static ItemStack glowstone = blockStack(Blocks.glowstone,1,3);
+	public static ItemStack gravel = blockStack(Blocks.gravel,10,5);
+	public static ItemStack hay = blockStack(Blocks.hay_block,3,3);
+	public static ItemStack hopper = blockStack(Blocks.hopper,1,1);
+	public static ItemStack ice = blockStack(Blocks.ice,3,4);
+	public static ItemStack jukebox = blockStack(Blocks.jukebox,1,0);
+	public static ItemStack log = createRandomMeta(Blocks.log,3,7,4);
+	public static ItemStack melon = blockStack(Blocks.melon_block,3,2);
+	public static ItemStack mossy = blockStack(Blocks.mossy_cobblestone,7,7);
+	public static ItemStack obsidian = blockStack(Blocks.obsidian,1,2);
+	public static ItemStack packedice = blockStack(Blocks.packed_ice,1,4);
+	public static ItemStack planks = blockStack(Blocks.planks,3,2);
+	public static ItemStack pumpkins = blockStack(Blocks.pumpkin,1,4);
+	public static ItemStack piston = blockStack(Blocks.piston,1,1);
+	public static ItemStack quartz = blockStack(Blocks.quartz_block,1,3);
+	public static ItemStack redstonelamp = blockStack(Blocks.redstone_lamp,1,3);
+	public static ItemStack sandstone = blockStack(Blocks.sandstone,6,7);
+	public static ItemStack snow = blockStack(Blocks.snow,3,7);
+	public static ItemStack soulsand = blockStack(Blocks.soul_sand,1,4);
+	public static ItemStack stone = blockStack(Blocks.stone,6,4);
+	public static ItemStack stonebrick = blockStack(Blocks.stonebrick,6,6);
+	public static ItemStack stickypiston = blockStack(Blocks.sticky_piston,1,2);
+	public static ItemStack sand = blockStack(Blocks.sand,3,9);
+	public static ItemStack tnt = blockStack(Blocks.tnt,1,3);
+	public static ItemStack torch = blockStack(Blocks.torch,4,6);
+	public static ItemStack t = createRandomMeta(Blocks.wool,5,18,15);
+
+	@Override
+	public void manipulateTradesForVillager(EntityVillager villager, MerchantRecipeList recipeList, Random random) {
+//		int flint = 4 + random.nextInt(6);
+		int glasspane = 3 + random.nextInt(7);
+//		int coal = 16 + random.nextInt(8);
+//		int iron = 7 + random.nextInt(3);
+//		int diamond = 3 + random.nextInt(1);
+		CostToItemStack CTIS = new CostToItemStack();
+		
+		switch(villager.getProfession()) {
+		case 6: // FARMER
+			recipeList.add(new MerchantRecipe(wheats, CTIS.getPrice(20)));
+			recipeList.add(new MerchantRecipe(potatoes, CTIS.getPrice(16)));
+			recipeList.add(new MerchantRecipe(carrot, CTIS.getPrice(16)));
+			recipeList.add(new MerchantRecipe(pumpkins, CTIS.getPrice(32)));
+			recipeList.add(new MerchantRecipe(melon, CTIS.getPrice(64)));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(128), CTIS.getsecondCost(128),bread));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(100), CTIS.getsecondCost(100), pumpkinpie));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(100), CTIS.getsecondCost(100), apples));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(78), CTIS.getsecondCost(78), cookies));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(220), CTIS.getsecondCost(220), cake));
+			recipeList.add(new MerchantRecipe(string,CTIS.getPrice(15)));
+			recipeList.add(new MerchantRecipe(coal,CTIS.getPrice(30)));
+			recipeList.add(new MerchantRecipe(fish, CTIS.getCost(160), cookedFish));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(300), CTIS.getsecondCost(300),EnchantmentHelper.addRandomEnchantment(random, new ItemStack(Items.fishing_rod,1,0), 5 + random.nextInt(15))));
+			recipeList.add(new MerchantRecipe(t,CTIS.getPrice(80)));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(200), CTIS.getsecondCost(200),shears));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(80), CTIS.getsecondCost(80), t));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(25), arrows));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(500), CTIS.getsecondCost(500), new ItemStack(Items.bow,1)));
+			recipeList.add(new MerchantRecipe(gravel, CTIS.getCost(160),flint));
+			
+			break;
+		case 7: // LIBRARIAN
+			int k;
+			Enchantment ench = Enchantment.enchantmentsBookList[random.nextInt(Enchantment.enchantmentsBookList.length)];
+			int i1 = MathHelper.getRandomIntegerInRange(random, ench.getMinLevel(), ench.getMaxLevel());
+			ItemStack itemstack = Items.enchanted_book.getEnchantedItemStack(new EnchantmentData(ench, i1));
+			k = 2 + random.nextInt(5 + i1 * 10) + 3 * i1;
+			
+			recipeList.add(new MerchantRecipe(papers, CTIS.getPrice(100)));
+			recipeList.add(new MerchantRecipe(new ItemStack(Items.book,8 + random.nextInt(2)), CTIS.getPrice(230)));
+			recipeList.add(new MerchantRecipe(new ItemStack(Items.written_book), CTIS.getPrice(150)));
+//			recipeList.add(new MerchantRecipe(new ItemStack(ItemReg.itemCoin,1 + random.nextInt(63),0), Items.enchanted_book.getEnchantedItemStack(new EnchantmentData(Enchantment.enchantmentsList[x], 1 + random.nextInt(18)))));
+
+			recipeList.add(new MerchantRecipe(new ItemStack(Items.book), CTIS.getCost(600), itemstack));
+
+			recipeList.add(new MerchantRecipe(CTIS.getCost(300), CTIS.getsecondCost(300), new ItemStack(Items.compass,1)));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(145), CTIS.getsecondCost(145),bookshelf));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(175), CTIS.getsecondCost(175), new ItemStack(Items.clock,1)));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(80), CTIS.getsecondCost(80), new ItemStack(Blocks.glass_pane,glasspane, random.nextInt(15))));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(700), CTIS.getsecondCost(700), new ItemStack(Items.name_tag,1,0)));
+			break;
+		case 8: // PRIEST
+			recipeList.add(new MerchantRecipe(rottenFlesh, CTIS.getPrice(200)));
+			recipeList.add(new MerchantRecipe(gold,CTIS.getPrice(120)));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(14), new ItemStack(Items.redstone, 1 + random.nextInt(3))));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(20), new ItemStack(Items.dye,1 + random.nextInt(1),4)));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(400), CTIS.getsecondCost(400), new ItemStack(Items.ender_eye,1)));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(70), CTIS.getsecondCost(70), new ItemStack(Items.glowstone_dust,1 + random.nextInt(2))));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(150), CTIS.getsecondCost(150), new ItemStack(Items.experience_bottle,1)));
+			break;
+		case 9: // BLACKSMITH
+			recipeList.add(new MerchantRecipe(coal, CTIS.getPrice(30)));
+			recipeList.add(new MerchantRecipe(iron, CTIS.getPrice(500)));
+			recipeList.add(new MerchantRecipe(diamonds, CTIS.getPrice(5000)));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(2000), CTIS.getsecondCost(2000), ironHelm));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(3500), CTIS.getsecondCost(3500), ironChest));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(10000), CTIS.getsecondCost(10000),EnchantmentHelper.addRandomEnchantment(random, diamondChest, 5 + random.nextInt(15))));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(1200), CTIS.getsecondCost(1200), chainBoots));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(1800), CTIS.getsecondCost(1800), chainChest));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(1000), CTIS.getsecondCost(1000), chainHelm));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(1300), CTIS.getsecondCost(1300), chainLegs));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(700), CTIS.getsecondCost(700), ironAxe));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(2000), CTIS.getsecondCost(2000),EnchantmentHelper.addRandomEnchantment(random, ironSword, 5 + random.nextInt(15))));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(5000), CTIS.getsecondCost(5000),EnchantmentHelper.addRandomEnchantment(random, ironSword, 5 + random.nextInt(15))));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(4500), CTIS.getsecondCost(4500),EnchantmentHelper.addRandomEnchantment(random, diamondAxe, 5 + random.nextInt(15))));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(1000), CTIS.getsecondCost(1000),EnchantmentHelper.addRandomEnchantment(random, ironSpade, 5 + random.nextInt(15))));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(1750), CTIS.getsecondCost(1750),EnchantmentHelper.addRandomEnchantment(random, ironPick, 5 + random.nextInt(15))));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(4500), CTIS.getsecondCost(4500),EnchantmentHelper.addRandomEnchantment(random, diamondPick, 5 + random.nextInt(15))));
+			break;
+		case 10: // BUTCHER
+			recipeList.add(new MerchantRecipe(porkchops, CTIS.getPrice(60)));
+			recipeList.add(new MerchantRecipe(chicken, CTIS.getPrice(55)));
+			recipeList.add(new MerchantRecipe(coal, CTIS.getPrice(95)));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(120), CTIS.getsecondCost(120),cookedPorckchops));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(120),CTIS.getsecondCost(120), cookedChicken));
+			recipeList.add(new MerchantRecipe(leather, CTIS.getPrice(300)));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(400), CTIS.getsecondCost(400), leatherLegs));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(900), CTIS.getsecondCost(900),EnchantmentHelper.addRandomEnchantment(random,new ItemStack(Items.leather_chestplate), 5 + random.nextInt(15))));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(4000), CTIS.getsecondCost(4000), new ItemStack(Items.saddle,1)));
+			break;
+		case 11: //Mob Specialist
+			recipeList.add(new MerchantRecipe(rottenFlesh, CTIS.getPrice(20)));
+			recipeList.add(new MerchantRecipe(string, CTIS.getPrice(20)));
+			recipeList.add(new MerchantRecipe(ender, CTIS.getPrice(75)));
+			recipeList.add(new MerchantRecipe(neatherStar, CTIS.getPrice(500)));
+			recipeList.add(new MerchantRecipe(spiderEyes, CTIS.getPrice(20)));
+			recipeList.add(new MerchantRecipe(gunpowder, CTIS.getPrice(35)));
+			recipeList.add(new MerchantRecipe(leather, CTIS.getPrice(40)));
+			recipeList.add(new MerchantRecipe(t, CTIS.getPrice(40)));
+			recipeList.add(new MerchantRecipe(witherBone, CTIS.getPrice(250)));
+			recipeList.add(new MerchantRecipe(witherSkull, CTIS.getPrice(340)));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(20), rottenFlesh));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(20), string));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(75),CTIS.getsecondCost(75), ender));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(1000), CTIS.getsecondCost(1000), neatherStar));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(20), spiderEyes));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(35), gunpowder));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(40), leather));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(40), t));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(250), CTIS.getsecondCost(250), witherBone));
+			recipeList.add(new MerchantRecipe(CTIS.getCost(340), CTIS.getsecondCost(340), witherSkull));
+		default:
+			break;
+
+		}	
+	}
+	
+	public static ItemStack create(Item item, int i,int x) {
+		int rand = x;
+		ItemStack input = new ItemStack(item, i + random.nextInt(rand));
+		stack = input;
+		return stack;
+	}
+	public static ItemStack createWoolStack(Item item, int i,int x,int meta) {
+		int rand = x;
+		ItemStack input = new ItemStack(item, i +random.nextInt(rand), random.nextInt(meta));
+		stack = input;
+		return stack;
+	}
+	public static ItemStack createMeta(Item item, int i, int x, int meta) {
+		int rand = x;
+		ItemStack input = new ItemStack(item, i + random.nextInt(rand), meta);
+		stack = input;
+		return stack;
+	}
+	public static ItemStack blockStack(Block block,int i,int x) {
+		int rand = x;
+		ItemStack input = new ItemStack(Item.getItemFromBlock(block), i + random.nextInt(rand));
+		stack = input;
+		return stack;
+	}
+	public static ItemStack createRandomMeta(Block block, int i, int x, int meta) {
+		int rand = x;
+		ItemStack input = new ItemStack(Item.getItemFromBlock(block), i+random.nextInt(rand), random.nextInt(meta));
+		stack = input;
+		return stack;
+	}
+	public static ItemStack creatMetaBlockStack(Block block, int i, int x, int meta) {
+		int rand = x;
+		ItemStack input = new ItemStack(Item.getItemFromBlock(block), i + random.nextInt(rand), meta);
+		stack = input;
+		return stack;
+	}
+}

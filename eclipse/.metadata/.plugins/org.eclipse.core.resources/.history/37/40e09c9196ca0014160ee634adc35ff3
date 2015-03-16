@@ -1,0 +1,49 @@
+package net.kloudspace.trades.event.handlers;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import static net.kloudspace.trades.util.Stacks.*;
+import static net.kloudspace.trades.util.CostMap.stacks;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.item.ItemStack;
+import net.minecraft.village.MerchantRecipeList;
+import cpw.mods.fml.common.registry.VillagerRegistry.IVillageTradeHandler;
+
+public class KloudDrops implements IVillageTradeHandler{
+	private final List<ItemStack> drops = new ArrayList<ItemStack>();
+
+	ItemStack ingredient;
+	ItemStack ingredient2;
+    private final int max = 64;
+    private final int min = 1;
+	
+	@Override
+	public void manipulateTradesForVillager(EntityVillager villager,
+			MerchantRecipeList recipeList, Random random) {
+		switch(villager.getProfession()){
+			case 8:
+				addDrops();
+				
+		}
+	}
+	
+	public void addDrops() {
+		drops.add(rottenFlesh);
+		drops.add(string);
+		drops.add(spiderEyes);
+		drops.add(ender);
+		drops.add(gunpowder);
+		drops.add(bones);
+		drops.add(leatherDrop);
+		drops.add(blazeRod);
+		drops.add(blazePowder);
+		drops.add(magma);
+		drops.add(witherBone);
+		drops.add(witherSkull);
+		drops.add(neatherStar);
+	}
+	
+
+}

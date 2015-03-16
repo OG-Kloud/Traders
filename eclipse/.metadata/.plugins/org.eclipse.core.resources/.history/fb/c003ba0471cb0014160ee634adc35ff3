@@ -1,0 +1,101 @@
+package net.kloudspace.trades.event.handlers;
+
+import static net.kloudspace.trades.util.Stacks.coal;
+import static net.kloudspace.trades.util.Stacks.diamonds;
+import static net.kloudspace.trades.util.Stacks.emeralds;
+import static net.kloudspace.trades.util.Stacks.glowstonedust;
+import static net.kloudspace.trades.util.Stacks.gold;
+import static net.kloudspace.trades.util.Stacks.iron;
+import static net.kloudspace.trades.util.Stacks.redstone;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import net.kloudspace.trades.util.CostMap;
+import net.kloudspace.trades.util.CostToItemStack;
+import net.kloudspace.trades.util.Reference;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.item.ItemStack;
+import net.minecraft.village.MerchantRecipe;
+import net.minecraft.village.MerchantRecipeList;
+import cpw.mods.fml.common.registry.VillagerRegistry.IVillageTradeHandler;
+
+public class KloudMaterials implements IVillageTradeHandler{
+	
+	private final List<ItemStack> mat = new ArrayList<ItemStack>();
+	
+	protected int min = 1;
+	protected int max = 6;
+	private ItemStack ingredient;
+	private ItemStack ingredient2;
+	private ItemStack result;
+	private int cost;
+	private int cost2;
+	private int total;
+	private int stacksize;
+	static Random rand = new Random();
+	public KloudMaterials() {
+		super();
+		addMaterials();
+	}
+	
+	@Override
+    public void manipulateTradesForVillager (EntityVillager villager, MerchantRecipeList recipeList, Random random) {
+		addMaterials();
+		switch(villager.getProfession()) {
+		case 9:
+			getStack();
+			getStack2();
+			getCost(ingredient);
+			getCost2(ingredient2);
+			stackCost(ingredient, ingredient2,cost,cost2);
+			getResultStack(total);
+			
+            if(ingredient.stackSize < 10 && ingredient2 != null) {
+            	recipeList.addToListWithCheck(new MerchantRecipe(ingredient,ingredient2,result));
+            }
+            else {
+            recipeList.addToListWithCheck(new MerchantRecipe(ingredient, result));
+            }
+		}
+	}
+	public void getStack() {
+		ingredient = mat.get(rand.nextInt(mat.size() - 1));
+	}
+	public void getStack2() {
+		ingredient2 = mat.get(rand.nextInt(mat.size() - 1));
+	}
+	public void getCost(ItemStack st1) {
+		int c = CostMap.stacks.get(st1);
+		cost = c;
+	}
+	public void getCost2(ItemStack st2) {
+		int c= CostMap.stacks.get(st2);
+		cost2 = c;
+	}
+	public void stackCost(ItemStack st1, ItemStack st2, int c, int c1) {
+		int ss1 = st1.stackSize;
+		int ss2 = st2.stackSize;
+		int stack1 = ss1 * c;
+		int stack2 = ss2 * c1;
+		int total1 = stack1 + stack2;
+		total = total1;
+	}
+	public void getResultStack(int tt) {
+		result = CostToItemStack.getCost(tt);
+	}
+	
+	
+	
+	public void addMaterials() {
+		mat.add(diamonds);
+		mat.add(iron);
+		mat.add(gold);
+		mat.add(emeralds);
+		mat.add(coal);
+		mat.add(redstone);
+		mat.add(glowstonedust);
+	}
+
+}

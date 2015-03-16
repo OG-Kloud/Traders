@@ -1,0 +1,8 @@
+package net.kloudspace.trades.handlers;
+
+import net.minecraft.client.gui.GuiScreen;
+
+public class NewGui  extends GuiScreen {
+	public static final int GUI_ID = 20;
+
+}

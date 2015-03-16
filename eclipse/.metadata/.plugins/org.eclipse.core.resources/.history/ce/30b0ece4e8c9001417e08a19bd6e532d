@@ -1,0 +1,95 @@
+package net.kloudspace.trades.util;
+
+import net.kloudspace.trades.item.ItemReg;
+import net.minecraft.item.ItemStack;
+
+public class CostToItemStack {
+	
+	private static ItemStack stack;
+	private static int re;
+	private int recalculate;
+	
+	private int costModifier(int i, String tier) {
+		int input;
+		if(tier == "tier1") {
+			input = i*8;
+			recalculate = input;
+		}
+		if(tier == "tier2") {
+			input = i*16;
+			recalculate = input;
+		}
+		if(tier == "tier3") {
+			input = i*32;
+			recalculate = input;
+		}
+		
+		return recalculate;
+	}
+	
+	public static void getPaymentStack(int price) {
+		if(price <= 32) {
+			stack = new ItemStack(ItemReg.itemCoin,price);
+		}
+		else if(price == 64) { 
+		stack = new ItemStack(ItemReg.itemCoin2,price/64);
+		re = price-(price/64);
+		}
+		else if(price > 64 && price <= 4096) {
+			stack = new ItemStack(ItemReg.itemCoin2,price/64);
+			re = (price- ((price/64)*64));
+		}
+		else if(price > 4096 && price <= 8192) {
+			stack = new ItemStack(ItemReg.itemCoin3,price/128);
+			re = (price - ((price/128)*128));
+		}
+		else if(price >8192 && price <= 12288) {
+			stack = new ItemStack(ItemReg.itemCoin4,price/192);
+			re = (price - ((price/192)*192));
+		}
+		else {
+			stack = new ItemStack(ItemReg.itemCoin,price);
+		}
+	}
+	
+	public static void getValueStack(int price) {
+		if(price <= 32) {
+			stack = new ItemStack(ItemReg.itemCoin,price*(3/4));
+		}
+		else if(price == 64) { 
+		stack = new ItemStack(ItemReg.itemCoin2,price/64*(3/4));
+		re = price-(price/64);
+		}
+		else if(price > 64 && price <= 4096) {
+			stack = new ItemStack(ItemReg.itemCoin2,price/64*(3/4));
+			re = (price- ((price/64)*64));
+		}
+		else if(price > 4096 && price <= 8192) {
+			stack = new ItemStack(ItemReg.itemCoin3,price/128*(3/4));
+			re = (price - ((price/128)*128));
+		}
+		else if(price >8192 && price <= 12288) {
+			stack = new ItemStack(ItemReg.itemCoin4,price/192*(3/4));
+			re = (price - ((price/192)*192));
+		}
+		else {
+			stack = new ItemStack(ItemReg.itemCoin,price*(3/4));
+		}
+	}
+	
+	public static ItemStack getPrice(int i) {
+		getValueStack(i);
+		return stack;
+	}
+	public static ItemStack getCost(int i) {
+		getPaymentStack(i);
+		return stack;
+	}
+	public static ItemStack getsecondCost(int i) {
+		getPaymentStack(i);
+		int rem = re;
+		getPaymentStack(rem);
+		return stack;
+	}
+
+}

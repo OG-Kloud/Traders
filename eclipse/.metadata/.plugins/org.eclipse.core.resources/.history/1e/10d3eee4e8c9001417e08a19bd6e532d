@@ -1,0 +1,213 @@
+package net.kloudspace.trades.util;
+
+import static net.kloudspace.trades.util.Stacks.apples;
+import static net.kloudspace.trades.util.Stacks.arrows;
+import static net.kloudspace.trades.util.Stacks.baked;
+import static net.kloudspace.trades.util.Stacks.beefs;
+import static net.kloudspace.trades.util.Stacks.blazePowder;
+import static net.kloudspace.trades.util.Stacks.blazeRod;
+import static net.kloudspace.trades.util.Stacks.bones;
+import static net.kloudspace.trades.util.Stacks.books;
+import static net.kloudspace.trades.util.Stacks.bread;
+import static net.kloudspace.trades.util.Stacks.cake;
+import static net.kloudspace.trades.util.Stacks.carrot;
+import static net.kloudspace.trades.util.Stacks.chainBoots;
+import static net.kloudspace.trades.util.Stacks.chainChest;
+import static net.kloudspace.trades.util.Stacks.chainHelm;
+import static net.kloudspace.trades.util.Stacks.chainLegs;
+import static net.kloudspace.trades.util.Stacks.chicken;
+import static net.kloudspace.trades.util.Stacks.coal;
+import static net.kloudspace.trades.util.Stacks.cookedBeef;
+import static net.kloudspace.trades.util.Stacks.cookedChicken;
+import static net.kloudspace.trades.util.Stacks.cookedFish;
+import static net.kloudspace.trades.util.Stacks.cookedPorkchops;
+import static net.kloudspace.trades.util.Stacks.cookies;
+import static net.kloudspace.trades.util.Stacks.diamondAxe;
+import static net.kloudspace.trades.util.Stacks.diamondBoots;
+import static net.kloudspace.trades.util.Stacks.diamondChest;
+import static net.kloudspace.trades.util.Stacks.diamondHelm;
+import static net.kloudspace.trades.util.Stacks.diamondHoe;
+import static net.kloudspace.trades.util.Stacks.diamondLegs;
+import static net.kloudspace.trades.util.Stacks.diamondPick;
+import static net.kloudspace.trades.util.Stacks.diamondSpade;
+import static net.kloudspace.trades.util.Stacks.diamondSword;
+import static net.kloudspace.trades.util.Stacks.diamonds;
+import static net.kloudspace.trades.util.Stacks.eggs;
+import static net.kloudspace.trades.util.Stacks.emeralds;
+import static net.kloudspace.trades.util.Stacks.ender;
+import static net.kloudspace.trades.util.Stacks.fish;
+import static net.kloudspace.trades.util.Stacks.flint;
+import static net.kloudspace.trades.util.Stacks.glowstonedust;
+import static net.kloudspace.trades.util.Stacks.gold;
+import static net.kloudspace.trades.util.Stacks.goldBoots;
+import static net.kloudspace.trades.util.Stacks.goldChest;
+import static net.kloudspace.trades.util.Stacks.goldHelm;
+import static net.kloudspace.trades.util.Stacks.goldLegs;
+import static net.kloudspace.trades.util.Stacks.gunpowder;
+import static net.kloudspace.trades.util.Stacks.iron;
+import static net.kloudspace.trades.util.Stacks.ironAxe;
+import static net.kloudspace.trades.util.Stacks.ironBoots;
+import static net.kloudspace.trades.util.Stacks.ironChest;
+import static net.kloudspace.trades.util.Stacks.ironHelm;
+import static net.kloudspace.trades.util.Stacks.ironHoe;
+import static net.kloudspace.trades.util.Stacks.ironLegs;
+import static net.kloudspace.trades.util.Stacks.ironPick;
+import static net.kloudspace.trades.util.Stacks.ironSpade;
+import static net.kloudspace.trades.util.Stacks.ironSword;
+import static net.kloudspace.trades.util.Stacks.leather;
+import static net.kloudspace.trades.util.Stacks.leatherBoots;
+import static net.kloudspace.trades.util.Stacks.leatherChest;
+import static net.kloudspace.trades.util.Stacks.leatherDrop;
+import static net.kloudspace.trades.util.Stacks.leatherHelm;
+import static net.kloudspace.trades.util.Stacks.leatherLegs;
+import static net.kloudspace.trades.util.Stacks.magma;
+import static net.kloudspace.trades.util.Stacks.melonslices;
+import static net.kloudspace.trades.util.Stacks.mushroomStew;
+import static net.kloudspace.trades.util.Stacks.neatherStar;
+import static net.kloudspace.trades.util.Stacks.papers;
+import static net.kloudspace.trades.util.Stacks.porkchops;
+import static net.kloudspace.trades.util.Stacks.potatoes;
+import static net.kloudspace.trades.util.Stacks.pumpkinpie;
+import static net.kloudspace.trades.util.Stacks.redstone;
+import static net.kloudspace.trades.util.Stacks.rottenFlesh;
+import static net.kloudspace.trades.util.Stacks.shears;
+import static net.kloudspace.trades.util.Stacks.spawnEggs;
+import static net.kloudspace.trades.util.Stacks.spiderEyes;
+import static net.kloudspace.trades.util.Stacks.sticks;
+import static net.kloudspace.trades.util.Stacks.stoneAxe;
+import static net.kloudspace.trades.util.Stacks.stoneHoe;
+import static net.kloudspace.trades.util.Stacks.stonePick;
+import static net.kloudspace.trades.util.Stacks.stoneSpade;
+import static net.kloudspace.trades.util.Stacks.stoneSword;
+import static net.kloudspace.trades.util.Stacks.string;
+import static net.kloudspace.trades.util.Stacks.witherBone;
+import static net.kloudspace.trades.util.Stacks.witherSkull;
+import static net.kloudspace.trades.util.Stacks.woodAxe;
+import static net.kloudspace.trades.util.Stacks.woodHoe;
+import static net.kloudspace.trades.util.Stacks.woodPick;
+import static net.kloudspace.trades.util.Stacks.woodSpade;
+import static net.kloudspace.trades.util.Stacks.woodSword;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import net.minecraft.item.ItemStack;
+
+public class CostMap {
+	public static Map<ItemStack, Integer> stacks = new HashMap<ItemStack, Integer>();
+	
+	public static void costMap() {
+
+	}
+	static {
+		stacks.put(apples, 6);
+		stacks.put(beefs, 20);
+		stacks.put(baked, 28);
+		stacks.put(bread, 3);
+		stacks.put(cake, 60);
+		stacks.put(carrot, 8);
+		stacks.put(chicken, 20);
+		stacks.put(cookedBeef, 60);
+		stacks.put(cookedChicken, 60);
+		stacks.put(cookedFish, 60);
+		stacks.put(cookedPorkchops, 60);
+		stacks.put(cookies,2);
+		stacks.put(fish, 20);
+		stacks.put(melonslices, 29);
+		stacks.put(mushroomStew, 85);
+		stacks.put(porkchops, 20);
+		stacks.put(potatoes, 7);
+		stacks.put(pumpkinpie, 76);
+	}
+	
+	public static void addFarmerMapping() {
+		
+
+		
+	}
+	public static int addToolMapping(ItemStack itemstack) {
+		stacks.put(arrows, 20);
+		stacks.put(woodAxe, 20);
+		stacks.put(woodHoe, 20);
+		stacks.put(woodPick, 20);
+		stacks.put(woodSpade, 20);
+		stacks.put(woodSword, 20);
+		stacks.put(stoneAxe, 20);
+		stacks.put(stoneHoe, 20);
+		stacks.put(stonePick, 20);
+		stacks.put(stoneSpade, 20);
+		stacks.put(stoneSword, 20);
+		stacks.put(ironAxe, 20);
+		stacks.put(ironHoe, 20);
+		stacks.put(ironPick, 20);
+		stacks.put(ironSpade, 20);
+		stacks.put(ironSpade, 20);
+		stacks.put(ironSword, 20);
+		stacks.put(diamondAxe, 20);
+		stacks.put(diamondHoe, 20);
+		stacks.put(diamondPick, 20);
+		stacks.put(diamondSpade, 20);
+		stacks.put(diamondSword, 20);
+		stacks.put(shears, 20);
+		return stacks.get(itemstack);
+	}
+	public static int addArmorMapping(ItemStack itemstack) {
+		stacks.put(leatherBoots, 20);
+		stacks.put(leatherChest, 20);
+		stacks.put(leatherHelm, 20);
+		stacks.put(leatherLegs, 20);
+		stacks.put(goldBoots, 20);
+		stacks.put(goldChest, 20);
+		stacks.put(goldHelm, 20);
+		stacks.put(goldLegs, 20);
+		stacks.put(ironBoots, 20);
+		stacks.put(ironChest, 20);
+		stacks.put(ironHelm, 20);
+		stacks.put(ironLegs, 20);
+		stacks.put(diamondBoots, 20);
+		stacks.put(diamondChest, 20);
+		stacks.put(diamondHelm, 20);
+		stacks.put(diamondLegs, 20);
+		stacks.put(chainBoots, 20);
+		stacks.put(chainChest, 20);
+		stacks.put(chainHelm, 20);
+		stacks.put(chainLegs, 20);
+		return stacks.get(itemstack);
+	}
+	public static int addDropsMapping(ItemStack itemstack) {
+		stacks.put(rottenFlesh, 20);
+		stacks.put(string, 20);
+		stacks.put(gunpowder, 20);
+		stacks.put(bones, 20);
+		stacks.put(leatherDrop, 20);
+		stacks.put(eggs, 20);
+		stacks.put(blazeRod, 20);
+		stacks.put(blazePowder, 20);
+		stacks.put(magma, 20);
+		stacks.put(ender, 20);
+		stacks.put(spiderEyes, 20);
+		stacks.put(witherBone, 20);
+		stacks.put(witherSkull, 20);
+		return stacks.get(itemstack);
+	}
+	public static int addMaterialMapping(ItemStack itemstack) {
+		stacks.put(diamonds, 20);
+		stacks.put(iron, 20);
+		stacks.put(gold, 20);
+		stacks.put(emeralds, 20);
+		stacks.put(coal, 20);
+		stacks.put(sticks, 20);
+		stacks.put(neatherStar, 20);
+		stacks.put(flint, 20);
+		stacks.put(leather, 20);
+		stacks.put(papers, 20);
+		stacks.put(books, 20);
+		stacks.put(spawnEggs, 20);
+		stacks.put(redstone, 20);
+		stacks.put(glowstonedust, 20);
+		return stacks.get(itemstack);
+	}
+//	public static Integer get(ItemStack itemstack) {
+//		return stacks.get(itemstack);
+//	}
+}

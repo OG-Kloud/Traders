@@ -1,0 +1,21 @@
+package net.kloudspace.trades.util;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+
+public class CostMap {
+	public static Map<String, Integer> stacks = new HashMap<String, Integer>();
+	
+	public CostMap() {
+		addMapping();
+	}
+	
+	public void addMapping() {
+		stacks.put(Items.apple.getUnlocalizedName(), 20);
+
+	}
+
+}

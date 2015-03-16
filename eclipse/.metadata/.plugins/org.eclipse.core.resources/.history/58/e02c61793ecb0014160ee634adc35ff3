@@ -1,0 +1,91 @@
+package net.kloudspace.trades.event.handlers;
+
+import static net.kloudspace.trades.util.CostMap.stacks;
+import static net.kloudspace.trades.util.Stacks.blazePowder;
+import static net.kloudspace.trades.util.Stacks.blazeRod;
+import static net.kloudspace.trades.util.Stacks.bones;
+import static net.kloudspace.trades.util.Stacks.ender;
+import static net.kloudspace.trades.util.Stacks.gunpowder;
+import static net.kloudspace.trades.util.Stacks.leatherDrop;
+import static net.kloudspace.trades.util.Stacks.magma;
+import static net.kloudspace.trades.util.Stacks.neatherStar;
+import static net.kloudspace.trades.util.Stacks.rottenFlesh;
+import static net.kloudspace.trades.util.Stacks.spiderEyes;
+import static net.kloudspace.trades.util.Stacks.string;
+import static net.kloudspace.trades.util.Stacks.witherBone;
+import static net.kloudspace.trades.util.Stacks.witherSkull;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import net.kloudspace.trades.util.CostToItemStack;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.item.ItemStack;
+import net.minecraft.village.MerchantRecipe;
+import net.minecraft.village.MerchantRecipeList;
+import cpw.mods.fml.common.registry.VillagerRegistry.IVillageTradeHandler;
+
+public class KloudDrops implements IVillageTradeHandler{
+	private final List<ItemStack> drops = new ArrayList<ItemStack>();
+
+	
+	
+    private final int max = 64;
+    private final int min = 1;
+
+	
+	@Override
+	public void manipulateTradesForVillager(EntityVillager villager,
+			MerchantRecipeList recipeList, Random random) {
+		switch(villager.getProfession()){
+			case 8:
+				addDrops();
+//				ItemStack ingredient;
+				ItemStack ingredient2 = null;
+			    int cost;
+			    int cost2 = 0;
+			    int modifier1;
+			    int modifier2 = 0;
+				int num = min + random.nextInt(max);
+				ItemStack one = drops.get(random.nextInt(drops.size() - 1));
+				ItemStack ingredient = one.copy().splitStack(num);
+				if(ingredient.stackSize <= 13) {
+					ingredient2 = drops.get(random.nextInt(drops.size())).copy().splitStack(num);
+				}
+				modifier1 = ingredient.stackSize;
+				int cost1 = ((stacks.get(ingredient).intValue()*modifier1));
+				if(ingredient2 != null) {
+					modifier2 = ingredient2.stackSize;
+					cost2 = ((stacks.get(ingredient2).intValue()*modifier2));
+				}
+				
+				cost = cost1 + cost2;
+				ItemStack result = CostToItemStack.getPrice(cost);
+				if(ingredient != null && result != null) {
+				recipeList.addToListWithCheck(new MerchantRecipe(ingredient, result));
+				}
+				if(ingredient2 != null) {
+					recipeList.addToListWithCheck(new MerchantRecipe(ingredient, ingredient2, result));
+				}
+		}
+	}
+	
+	public void addDrops() {
+		drops.add(rottenFlesh);
+		drops.add(string);
+		drops.add(spiderEyes);
+		drops.add(ender);
+		drops.add(gunpowder);
+		drops.add(bones);
+		drops.add(leatherDrop);
+		drops.add(blazeRod);
+		drops.add(blazePowder);
+		drops.add(magma);
+		drops.add(witherBone);
+		drops.add(witherSkull);
+		drops.add(neatherStar);
+	}
+	
+
+}

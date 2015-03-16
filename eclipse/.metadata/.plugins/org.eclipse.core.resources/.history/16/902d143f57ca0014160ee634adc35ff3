@@ -1,0 +1,5 @@
+package net.kloudspace.trades.inv;
+
+public class KloudContainer extends Container {
+
+}

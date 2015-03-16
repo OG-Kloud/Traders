@@ -1,0 +1,32 @@
+package net.kloudspace.trades.replacers;
+
+import net.kloudspace.trades.util.Reference;
+import cpw.mods.fml.common.registry.VillagerRegistry;
+
+public class VillagerReplacer {
+	
+	public static void call() {
+		 VillagerRegistry.instance().registerVillagerId(6);
+		 VillagerRegistry.instance().registerVillagerId(7);
+		 VillagerRegistry.instance().registerVillagerId(8);
+		 VillagerRegistry.instance().registerVillagerId(9);
+		 VillagerRegistry.instance().registerVillagerId(10);
+		 VillagerRegistry.instance().registerVillagerId(11);
+		 VillagerRegistry.instance().registerVillagerId(12);
+				
+		 VillagerRegistry.instance().registerVillageTradeHandler(6, new TradeHandler());
+		 VillagerRegistry.instance().registerVillageTradeHandler(7, new TradeHandler());
+		 VillagerRegistry.instance().registerVillageTradeHandler(8, new TradeHandler());
+		 VillagerRegistry.instance().registerVillageTradeHandler(9, new TradeHandler());
+		 VillagerRegistry.instance().registerVillageTradeHandler(10, new TradeHandler());
+		 
+		 VillagerRegistry.instance().registerVillagerSkin(6, Reference.getVillager(6));
+		 VillagerRegistry.instance().registerVillagerSkin(7, Reference.getVillager(7));
+		 VillagerRegistry.instance().registerVillagerSkin(8, Reference.getVillager(8));
+		 VillagerRegistry.instance().registerVillagerSkin(9, Reference.getVillager(9));
+		 VillagerRegistry.instance().registerVillagerSkin(10, Reference.getVillager(10));
+	}
+	
+	
+
+}

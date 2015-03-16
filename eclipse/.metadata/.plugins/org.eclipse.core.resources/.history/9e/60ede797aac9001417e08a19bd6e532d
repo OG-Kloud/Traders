@@ -1,0 +1,39 @@
+package net.kloudspace.trades.util;
+
+import static net.kloudspace.trades.util.Stacks.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+
+public class CostMap {
+	public static Map<ItemStack, Integer> stacks = new HashMap<ItemStack, Integer>();
+	
+	public CostMap() {
+		addMapping();
+	}
+	
+	public static void addMapping() {
+		stacks.put(apples, 20);
+		stacks.put(beefs, 20);
+		stacks.put(baked, 20);
+		stacks.put(bread, 20);
+		stacks.put(cake, 20);
+		stacks.put(carrot, 20);
+		stacks.put(chicken, 20);
+		stacks.put(cookedBeef, 20);
+		stacks.put(cookedChicken, 20);
+		stacks.put(cookedFish, 20);
+		stacks.put(cookedPorkchops, 20);
+		stacks.put(cookies, 20);
+		stacks.put(fish, 20);
+		stacks.put(melonslices, 20);
+		stacks.put(mushroomStew, 20);
+		stacks.put(porkchops, 20);
+		stacks.put(potatoes, 20);
+		stacks.put(pumpkinpie, 20);
+	}
+
+}

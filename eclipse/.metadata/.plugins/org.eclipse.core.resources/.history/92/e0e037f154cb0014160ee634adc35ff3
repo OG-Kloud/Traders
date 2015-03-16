@@ -1,0 +1,47 @@
+package net.kloudspace.trades.event.handlers;
+
+import static net.kloudspace.trades.util.Stacks.coal;
+import static net.kloudspace.trades.util.Stacks.diamonds;
+import static net.kloudspace.trades.util.Stacks.emeralds;
+import static net.kloudspace.trades.util.Stacks.glowstonedust;
+import static net.kloudspace.trades.util.Stacks.gold;
+import static net.kloudspace.trades.util.Stacks.iron;
+import static net.kloudspace.trades.util.Stacks.redstone;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import cpw.mods.fml.common.registry.VillagerRegistry.IVillageTradeHandler;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.item.ItemStack;
+import net.minecraft.village.MerchantRecipeList;
+
+public class KloudMaterials implements IVillageTradeHandler{
+	
+	private final List<ItemStack> mat = new ArrayList<ItemStack>();
+	
+	public KloudMaterials() {
+		super();
+		addMaterials();
+	}
+	
+	@Override
+    public void manipulateTradesForVillager (EntityVillager villager, MerchantRecipeList recipeList, Random random) {
+		addMaterials();
+		
+	}
+	
+	
+	
+	public void addMaterials() {
+		mat.add(diamonds);
+		mat.add(iron);
+		mat.add(gold);
+		mat.add(emeralds);
+		mat.add(coal);
+		mat.add(redstone);
+		mat.add(glowstonedust);
+	}
+
+}

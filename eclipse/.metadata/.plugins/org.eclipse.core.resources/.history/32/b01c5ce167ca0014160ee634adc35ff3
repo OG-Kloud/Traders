@@ -1,0 +1,30 @@
+package net.kloudspace.trades.handlers;
+
+import net.kloudspace.trades.util.Reference;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.util.ResourceLocation;
+
+import org.lwjgl.opengl.GL11;
+
+public class Deployer extends GuiContainer{
+
+	public static final ResourceLocation texture = new ResourceLocation(Reference.MODID, "textures/gui/deployer.png");
+	
+	public Deployer(InventoryPlayer invPlayer, TileEntityTutoiralDeployer entity) {
+		super(new ContainerDeployer(invPlayer, entity));
+		
+		xSize = 176;
+		ySize = 165;
+	}
+	
+	@Override
+	public void drawGuiContainerBackgroundLayer(float f, int j, int i) {
+		GL11.glColor4f(1F, 1F, 1F, 1F);
+		this.mc.getMinecraft().getResourceManager().getResource(texture);
+	}
+	
+	
+	
+}

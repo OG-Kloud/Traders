@@ -1,0 +1,5 @@
+package net.kloudspace.trades.handlers;
+
+public class NewGui {
+
+}

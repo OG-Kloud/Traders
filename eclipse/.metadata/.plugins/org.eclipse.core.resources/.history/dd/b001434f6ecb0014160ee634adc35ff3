@@ -1,0 +1,77 @@
+package net.kloudspace.trades.event.handlers;
+
+import static net.kloudspace.trades.util.Stacks.coal;
+import static net.kloudspace.trades.util.Stacks.diamonds;
+import static net.kloudspace.trades.util.Stacks.emeralds;
+import static net.kloudspace.trades.util.Stacks.glowstonedust;
+import static net.kloudspace.trades.util.Stacks.gold;
+import static net.kloudspace.trades.util.Stacks.iron;
+import static net.kloudspace.trades.util.Stacks.redstone;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import net.kloudspace.trades.util.CostMap;
+import net.kloudspace.trades.util.CostToItemStack;
+import net.kloudspace.trades.util.Reference;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.item.ItemStack;
+import net.minecraft.village.MerchantRecipe;
+import net.minecraft.village.MerchantRecipeList;
+import cpw.mods.fml.common.registry.VillagerRegistry.IVillageTradeHandler;
+
+public class KloudMaterials implements IVillageTradeHandler{
+	
+	private final List<ItemStack> mat = new ArrayList<ItemStack>();
+	
+	protected int min = 1;
+	protected int max = 6;
+	
+	public KloudMaterials() {
+		super();
+		addMaterials();
+	}
+	
+	@Override
+    public void manipulateTradesForVillager (EntityVillager villager, MerchantRecipeList recipeList, Random random) {
+		addMaterials();
+		switch(villager.getProfession()) {
+		case 9:
+			ItemStack one = mat.get(random.nextInt(mat.size()-1));
+			ItemStack two = mat.get(random.nextInt(mat.size() - 1));
+			int stacksize = min + random.nextInt(max);
+			int stacksize2 = min + random.nextInt(max);
+            ItemStack ingredient = one.copy().splitStack(stacksize);
+            ItemStack ingredient2 = two.copy().splitStack(stacksize2);
+            int modOne = stacksize;
+            int modTwo = stacksize2;
+            int cost1 = CostMap.stacks.get(one);
+            Reference.logger.info("Stack size =" +stacksize +"Item in Stack:" + one.getItem());
+            int cost2 = CostMap.stacks.get(two);
+            int modedCost1 = cost1 * modOne;
+            int modedCost2 = cost2 * modTwo;
+            int finalCost = cost1 + cost2;
+            ItemStack result = CostToItemStack.getPrice(finalCost);
+            if(ingredient.stackSize < 10 && ingredient2 != null) {
+            	recipeList.addToListWithCheck(new MerchantRecipe(ingredient,ingredient2,result));
+            }
+            else {
+            recipeList.addToListWithCheck(new MerchantRecipe(ingredient, result));
+            }
+		}
+	}
+	
+	
+	
+	public void addMaterials() {
+		mat.add(diamonds);
+		mat.add(iron);
+		mat.add(gold);
+		mat.add(emeralds);
+		mat.add(coal);
+		mat.add(redstone);
+		mat.add(glowstonedust);
+	}
+
+}

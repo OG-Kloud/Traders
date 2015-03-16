@@ -1,0 +1,88 @@
+package net.kloudspace.trades.util;
+
+import static net.kloudspace.trades.util.Stacks.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+
+public class CostMap {
+	public static Map<ItemStack, Integer> stacks = new HashMap<ItemStack, Integer>();
+	
+	public CostMap() {
+		addFarmerMapping();
+		addToolMapping();
+		addArmorMapping();
+	}
+	
+	public static void addFarmerMapping() {
+		stacks.put(apples, 20);
+		stacks.put(beefs, 20);
+		stacks.put(baked, 20);
+		stacks.put(bread, 20);
+		stacks.put(cake, 20);
+		stacks.put(carrot, 20);
+		stacks.put(chicken, 20);
+		stacks.put(cookedBeef, 20);
+		stacks.put(cookedChicken, 20);
+		stacks.put(cookedFish, 20);
+		stacks.put(cookedPorkchops, 20);
+		stacks.put(cookies, 20);
+		stacks.put(fish, 20);
+		stacks.put(melonslices, 20);
+		stacks.put(mushroomStew, 20);
+		stacks.put(porkchops, 20);
+		stacks.put(potatoes, 20);
+		stacks.put(pumpkinpie, 20);
+		
+	}
+	public static void addToolMapping() {
+		stacks.put(arrows, 20);
+		stacks.put(woodAxe, 20);
+		stacks.put(woodHoe, 20);
+		stacks.put(woodPick, 20);
+		stacks.put(woodSpade, 20);
+		stacks.put(woodSword, 20);
+		stacks.put(stoneAxe, 20);
+		stacks.put(stoneHoe, 20);
+		stacks.put(stonePick, 20);
+		stacks.put(stoneSpade, 20);
+		stacks.put(stoneSword, 20);
+		stacks.put(ironAxe, 20);
+		stacks.put(ironHoe, 20);
+		stacks.put(ironPick, 20);
+		stacks.put(ironSpade, 20);
+		stacks.put(ironSpade, 20);
+		stacks.put(ironSword, 20);
+		stacks.put(diamondAxe, 20);
+		stacks.put(diamondHoe, 20);
+		stacks.put(diamondPick, 20);
+		stacks.put(diamondSpade, 20);
+		stacks.put(diamondSword, 20);
+		stacks.put(shears, 20);
+	}
+	public static void addArmorMapping() {
+		stacks.put(leatherBoots, 20);
+		stacks.put(leatherChest, 20);
+		stacks.put(leatherHelm, 20);
+		stacks.put(leatherLegs, 20);
+		stacks.put(goldBoots, 20);
+		stacks.put(goldChest, 20);
+		stacks.put(goldHelm, 20);
+		stacks.put(goldLegs, 20);
+		stacks.put(ironBoots, 20);
+		stacks.put(ironChest, 20);
+		stacks.put(ironHelm, 20);
+		stacks.put(ironLegs, 20);
+		stacks.put(diamondBoots, 20);
+		stacks.put(diamondChest, 20);
+		stacks.put(diamondHelm, 20);
+		stacks.put(diamondLegs, 20);
+		stacks.put(chainBoots, 20);
+		stacks.put(chainChest, 20);
+		stacks.put(chainHelm, 20);
+		stacks.put(chainLegs, 20);
+	}
+}

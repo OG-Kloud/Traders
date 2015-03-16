@@ -1,0 +1,5 @@
+package net.kloudspace.trades.item.artproxy;
+
+public class TextureHandler {
+
+}

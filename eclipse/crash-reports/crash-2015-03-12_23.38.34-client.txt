@@ -1,0 +1,99 @@
+---- Minecraft Crash Report ----
+// I blame Dinnerbone.
+
+Time: 3/12/15 11:38 PM
+Description: Rendering screen
+
+java.lang.NullPointerException: Rendering screen
+	at net.minecraft.client.gui.GuiScreen.renderToolTip(GuiScreen.java:124)
+	at net.minecraft.client.gui.GuiMerchant.drawScreen(GuiMerchant.java:183)
+	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1137)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1056)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:951)
+	at net.minecraft.client.main.Main.main(Main.java:164)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(Unknown Source)
+	at GradleStart.main(Unknown Source)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at net.minecraft.client.gui.GuiScreen.renderToolTip(GuiScreen.java:124)
+	at net.minecraft.client.gui.GuiMerchant.drawScreen(GuiMerchant.java:183)
+
+-- Screen render details --
+Details:
+	Screen name: net.minecraft.client.gui.GuiMerchant
+	Mouse location: Scaled: (176, 75). Absolute: (353, 328)
+	Screen size: Scaled: (427, 240). Absolute: (854, 480). Scale factor of 2
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityClientPlayerMP['Player875'/113, l='MpServer', x=-39.10, y=85.62, z=-4.62]]
+	Chunk stats: MultiplayerChunkCache: 583, 583
+	Level seed: 0
+	Level generator: ID 00 - default, ver 1. Features enabled: false
+	Level generator options: 
+	Level spawn location: World: (0,64,0), Chunk: (at 0,4,0 in 0,0; contains blocks 0,0,0 to 15,255,15), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Level time: 2658 game time, 2658 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 47 total; [EntitySquid['Squid'/0, l='MpServer', x=-103.50, y=58.38, z=-17.53], EntitySquid['Squid'/1, l='MpServer', x=-100.91, y=60.00, z=-13.34], EntitySquid['Squid'/2, l='MpServer', x=-105.69, y=54.38, z=-17.66], EntitySquid['Squid'/3, l='MpServer', x=-95.72, y=58.22, z=-15.91], EntityBat['Bat'/4, l='MpServer', x=-106.25, y=30.10, z=15.66], EntityBat['Bat'/5, l='MpServer', x=-111.78, y=28.10, z=21.44], EntityBat['Bat'/6, l='MpServer', x=-106.25, y=28.24, z=14.48], EntitySquid['Squid'/8, l='MpServer', x=-101.34, y=51.00, z=42.50], EntitySquid['Squid'/9, l='MpServer', x=-102.28, y=52.31, z=41.34], EntitySquid['Squid'/10, l='MpServer', x=-94.66, y=57.38, z=17.41], EntitySquid['Squid'/11, l='MpServer', x=-94.50, y=55.00, z=14.50], EntitySquid['Squid'/12, l='MpServer', x=-89.94, y=48.25, z=21.22], EntitySquid['Squid'/13, l='MpServer', x=-88.38, y=52.72, z=24.72], EntitySquid['Squid'/14, l='MpServer', x=-95.44, y=59.31, z=23.19], EntitySquid['Squid'/15, l='MpServer', x=-82.03, y=55.25, z=15.59], EntityBat['Bat'/17, l='MpServer', x=-32.25, y=27.63, z=-52.25], EntityVillager['Villager'/19, l='MpServer', x=-39.50, y=84.00, z=-3.50], EntityBat['Bat'/18, l='MpServer', x=-41.50, y=31.50, z=-39.76], EntityItem['item.tile.flower1.dandelion'/21, l='MpServer', x=-28.63, y=13.13, z=-23.19], EntityVillager['Villager'/20, l='MpServer', x=-38.50, y=83.00, z=-6.50], EntityVillager['Villager'/23, l='MpServer', x=-27.25, y=70.00, z=6.56], EntityVillager['Villager'/22, l='MpServer', x=-31.56, y=71.00, z=8.92], EntityBat['Bat'/25, l='MpServer', x=-25.46, y=27.00, z=33.22], EntityVillager['Villager'/24, l='MpServer', x=-15.47, y=68.00, z=-11.13], EntityBat['Bat'/27, l='MpServer', x=-8.58, y=12.03, z=-53.78], EntityBat['Bat'/29, l='MpServer', x=-9.03, y=15.80, z=-60.11], EntityBat['Bat'/28, l='MpServer', x=-14.52, y=13.58, z=-44.53], EntityBat['Bat'/31, l='MpServer', x=6.58, y=37.85, z=-45.70], EntityBat['Bat'/30, l='MpServer', x=-4.25, y=35.10, z=-57.66], EntityVillager['Villager'/34, l='MpServer', x=-12.69, y=67.00, z=64.38], EntityBat['Bat'/171, l='MpServer', x=-0.83, y=10.29, z=-32.75], EntityVillager['Villager'/35, l='MpServer', x=-12.47, y=67.00, z=63.50], EntityVillager['Villager'/32, l='MpServer', x=-1.88, y=66.00, z=1.50], EntityVillager['Villager'/33, l='MpServer', x=-11.88, y=67.00, z=64.84], EntityVillager['Villager'/38, l='MpServer', x=-10.66, y=67.00, z=65.44], EntityVillager['Villager'/39, l='MpServer', x=-12.69, y=67.00, z=65.69], EntityVillager['Villager'/36, l='MpServer', x=-10.44, y=67.00, z=63.00], EntityVillager['Villager'/37, l='MpServer', x=-11.56, y=67.00, z=63.56], EntityBat['Bat'/42, l='MpServer', x=8.96, y=33.01, z=-47.79], EntityBat['Bat'/43, l='MpServer', x=6.38, y=29.04, z=-57.54], EntityVillager['Villager'/40, l='MpServer', x=-11.66, y=67.00, z=65.69], EntityVillager['Villager'/41, l='MpServer', x=-10.78, y=67.00, z=64.59], EntityVillager['Villager'/44, l='MpServer', x=17.69, y=71.00, z=21.22], EntityVillager['Villager'/200, l='MpServer', x=-37.50, y=84.00, z=-2.50], EntityVillager['Villager'/198, l='MpServer', x=-37.50, y=84.00, z=-4.50], EntityBat['Bat'/194, l='MpServer', x=4.88, y=15.98, z=-82.56], EntityClientPlayerMP['Player875'/113, l='MpServer', x=-39.10, y=85.62, z=-4.62]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:415)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2555)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:973)
+	at net.minecraft.client.main.Main.main(Main.java:164)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(Unknown Source)
+	at GradleStart.main(Unknown Source)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.7.10
+	Operating System: Windows 8.1 (amd64) version 6.3
+	Java Version: 1.7.0_75, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 908669024 bytes (866 MB) / 1056309248 bytes (1007 MB) up to 1056309248 bytes (1007 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	AABB Pool Size: 0 (0 bytes; 0 MB) allocated, 0 (0 bytes; 0 MB) used
+	IntCache: cache: 0, tcache: 0, allocated: 12, tallocated: 94
+	FML: MCP v9.05 FML v7.10.85.1291 Minecraft Forge 10.13.2.1291 4 mods loaded, 4 mods active
+	mcp{9.05} [Minecraft Coder Pack] (minecraft.jar) Unloaded->Constructed->Pre-initialized->Initialized->Post-initialized->Available->Available->Available->Available
+	FML{7.10.85.1291} [Forge Mod Loader] (forgeSrc-1.7.10-10.13.2.1291.jar) Unloaded->Constructed->Pre-initialized->Initialized->Post-initialized->Available->Available->Available->Available
+	Forge{10.13.2.1291} [Minecraft Forge] (forgeSrc-1.7.10-10.13.2.1291.jar) Unloaded->Constructed->Pre-initialized->Initialized->Post-initialized->Available->Available->Available->Available
+	kloudspacetrader{1.7.10-1} [Trader] (bin) Unloaded->Constructed->Pre-initialized->Initialized->Post-initialized->Available->Available->Available->Available
+	Launched Version: 1.7.10
+	LWJGL: 2.9.1
+	OpenGL: Intel(R) HD Graphics GL version 4.0.0 - Build 10.18.10.3308, Intel
+	GL Caps: Using GL 1.3 multitexturing.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Anisotropic filtering is supported and maximum anisotropy is 16.
+Shaders are available because OpenGL 2.1 is supported.
+
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: []
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	Vec3 Pool Size: 0 (0 bytes; 0 MB) allocated, 0 (0 bytes; 0 MB) used
+	Anisotropic Filtering: Off (1)

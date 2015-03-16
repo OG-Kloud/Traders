@@ -1,0 +1,11 @@
+package net.kloudspace.trades.util;
+
+public class Reference {
+	
+	public static final String MODID = "kloudspacetrader";
+	public static final String NAME = "Trader";
+	public static final String VERSION = "1.7.10-1";
+	public static final String CLIENT = "net.kloudspace.client.ClientProxy";
+	public static final String COMMON = " net.kloudspace.common.CommonProxy";
+
+}

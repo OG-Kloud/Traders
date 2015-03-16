@@ -1,0 +1,380 @@
+package net.kloudspace.trades.event.handlers;
+
+import static net.kloudspace.trades.util.Stacks.apples;
+import static net.kloudspace.trades.util.Stacks.arrows;
+import static net.kloudspace.trades.util.Stacks.baked;
+import static net.kloudspace.trades.util.Stacks.beefs;
+import static net.kloudspace.trades.util.Stacks.blazePowder;
+import static net.kloudspace.trades.util.Stacks.blazeRod;
+import static net.kloudspace.trades.util.Stacks.bones;
+import static net.kloudspace.trades.util.Stacks.bread;
+import static net.kloudspace.trades.util.Stacks.cake;
+import static net.kloudspace.trades.util.Stacks.carrot;
+import static net.kloudspace.trades.util.Stacks.chainBoots;
+import static net.kloudspace.trades.util.Stacks.chainChest;
+import static net.kloudspace.trades.util.Stacks.chainHelm;
+import static net.kloudspace.trades.util.Stacks.chainLegs;
+import static net.kloudspace.trades.util.Stacks.chicken;
+import static net.kloudspace.trades.util.Stacks.coal;
+import static net.kloudspace.trades.util.Stacks.cookedBeef;
+import static net.kloudspace.trades.util.Stacks.cookedChicken;
+import static net.kloudspace.trades.util.Stacks.cookedFish;
+import static net.kloudspace.trades.util.Stacks.cookedPorkchops;
+import static net.kloudspace.trades.util.Stacks.cookies;
+import static net.kloudspace.trades.util.Stacks.diamondAxe;
+import static net.kloudspace.trades.util.Stacks.diamondBoots;
+import static net.kloudspace.trades.util.Stacks.diamondChest;
+import static net.kloudspace.trades.util.Stacks.diamondHelm;
+import static net.kloudspace.trades.util.Stacks.diamondHoe;
+import static net.kloudspace.trades.util.Stacks.diamondLegs;
+import static net.kloudspace.trades.util.Stacks.diamondPick;
+import static net.kloudspace.trades.util.Stacks.diamondSpade;
+import static net.kloudspace.trades.util.Stacks.diamondSword;
+import static net.kloudspace.trades.util.Stacks.diamonds;
+import static net.kloudspace.trades.util.Stacks.emeralds;
+import static net.kloudspace.trades.util.Stacks.ender;
+import static net.kloudspace.trades.util.Stacks.fish;
+import static net.kloudspace.trades.util.Stacks.glowstonedust;
+import static net.kloudspace.trades.util.Stacks.gold;
+import static net.kloudspace.trades.util.Stacks.gunpowder;
+import static net.kloudspace.trades.util.Stacks.iron;
+import static net.kloudspace.trades.util.Stacks.ironAxe;
+import static net.kloudspace.trades.util.Stacks.ironBoots;
+import static net.kloudspace.trades.util.Stacks.ironChest;
+import static net.kloudspace.trades.util.Stacks.ironHelm;
+import static net.kloudspace.trades.util.Stacks.ironHoe;
+import static net.kloudspace.trades.util.Stacks.ironLegs;
+import static net.kloudspace.trades.util.Stacks.ironPick;
+import static net.kloudspace.trades.util.Stacks.ironSpade;
+import static net.kloudspace.trades.util.Stacks.ironSword;
+import static net.kloudspace.trades.util.Stacks.leatherBoots;
+import static net.kloudspace.trades.util.Stacks.leatherChest;
+import static net.kloudspace.trades.util.Stacks.leatherDrop;
+import static net.kloudspace.trades.util.Stacks.leatherHelm;
+import static net.kloudspace.trades.util.Stacks.leatherLegs;
+import static net.kloudspace.trades.util.Stacks.magma;
+import static net.kloudspace.trades.util.Stacks.melonslices;
+import static net.kloudspace.trades.util.Stacks.mushroomStew;
+import static net.kloudspace.trades.util.Stacks.neatherStar;
+import static net.kloudspace.trades.util.Stacks.porkchops;
+import static net.kloudspace.trades.util.Stacks.potatoes;
+import static net.kloudspace.trades.util.Stacks.pumpkinpie;
+import static net.kloudspace.trades.util.Stacks.redstone;
+import static net.kloudspace.trades.util.Stacks.rottenFlesh;
+import static net.kloudspace.trades.util.Stacks.spiderEyes;
+import static net.kloudspace.trades.util.Stacks.stoneAxe;
+import static net.kloudspace.trades.util.Stacks.stoneHoe;
+import static net.kloudspace.trades.util.Stacks.stonePick;
+import static net.kloudspace.trades.util.Stacks.stoneSpade;
+import static net.kloudspace.trades.util.Stacks.stoneSword;
+import static net.kloudspace.trades.util.Stacks.string;
+import static net.kloudspace.trades.util.Stacks.witherBone;
+import static net.kloudspace.trades.util.Stacks.witherSkull;
+import static net.kloudspace.trades.util.Stacks.woodAxe;
+import static net.kloudspace.trades.util.Stacks.woodHoe;
+import static net.kloudspace.trades.util.Stacks.woodPick;
+import static net.kloudspace.trades.util.Stacks.woodSpade;
+import static net.kloudspace.trades.util.Stacks.woodSword;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import net.kloudspace.trades.util.CostMap;
+import net.kloudspace.trades.util.CostToItemStack;
+import net.kloudspace.trades.util.Reference;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.item.ItemStack;
+import net.minecraft.village.MerchantRecipe;
+import net.minecraft.village.MerchantRecipeList;
+import cpw.mods.fml.common.registry.VillagerRegistry.IVillageTradeHandler;
+public class KloudFarmer implements IVillageTradeHandler{
+	
+	private final List<ItemStack> foods = new ArrayList<ItemStack>();
+	private final List<ItemStack> tools = new ArrayList<ItemStack>();
+	private final List<ItemStack> arm = new ArrayList<ItemStack>();
+	private final List<ItemStack> drops = new ArrayList<ItemStack>();
+	private final List<ItemStack> mat = new ArrayList<ItemStack>();
+    private final int max = 17;
+    private final int min = 7;
+	public KloudFarmer() {
+		super();
+		addFood();
+		addArmor();
+		addTools();
+		addTools();
+		addMaterials();
+	}
+	
+	@Override
+    public void manipulateTradesForVillager (EntityVillager villager, MerchantRecipeList recipeList, Random random) {
+		switch(villager.getProfession()) {
+		case 6:
+			addFood();
+			ItemStack ingredient = foods.get(random.nextInt(foods.size()-1));
+			int num = getNextInt(random, min, max);
+                Reference.logger.info(ingredient);
+                int x = CostMap.stacks.get(ingredient).intValue();
+                ItemStack result = CostToItemStack.getPrice(x);
+
+                recipeList.addToListWithCheck(new MerchantRecipe(ingredient, result));
+		}
+
+	}
+	 private ItemStack getIngredient (Random random, int num)
+	    {
+	        int sc = getNextInt(random, 0, foods.size() - 1);
+	        ItemStack item = foods.get(sc);
+	        return item.copy().splitStack(Math.min(num, item.stackSize));
+	    }
+	
+	private ItemStack stackSizer(Random random, ItemStack ingredient) {
+		int sc;
+		ItemStack is;
+		int tries = 0;
+		sc = getNextInt(random, 0, foods.size() - 1);
+		is = foods.get(random.nextInt(foods.size()-1));
+		
+		int num = getNextInt(random, 0, Math.min(is.stackSize, max - ingredient.stackSize));
+		return is.copy().splitStack(num);
+	
+	}
+	
+	private int calcStackSize (ItemStack ingredient, ItemStack ingredient2)
+    {
+        if (ingredient == null)
+            return 1;
+        int num = ingredient.stackSize;
+        if (ingredient2 != null)
+            num += ingredient2.stackSize;
+
+        return Math.max(1, Math.round((num - 5) / 4));
+    }
+    private ItemStack getFarmerIngredient (Random random, ItemStack ingredient)
+    {
+    	addFood();
+        
+           
+            ItemStack is = foods.get(random.nextInt(foods.size()-1));
+        
+        return is;
+    }
+    private ItemStack getToolsIngredient (Random random, ItemStack ingredient)
+    {
+    	addTools();
+        int sc;
+        ItemStack is;
+        int tries = 0;
+        while (true)
+        {
+            sc = getNextInt(random, 0, tools.size() - 1);
+            is = tools.get(sc);
+
+            if (is != ingredient || is.getItemDamage() != ingredient.getItemDamage())
+                break;
+
+            tries++;
+            if (tries == 5)
+                return null;
+        }
+        int num = getNextInt(random, 0, Math.min(is.stackSize, max - ingredient.stackSize));
+        return is.copy().splitStack(num);
+    }
+    private ItemStack getArmorIngredient (Random random, ItemStack ingredient)
+    {
+    	addArmor();
+        int sc;
+        ItemStack is;
+        int tries = 0;
+        while (true)
+        {
+            sc = getNextInt(random, 0, arm.size() - 1);
+            is = arm.get(sc);
+
+            if (is != ingredient || is.getItemDamage() != ingredient.getItemDamage())
+                break;
+
+            tries++;
+            if (tries == 5)
+                return null;
+        }
+        int num = getNextInt(random, 0, Math.min(is.stackSize, max - ingredient.stackSize));
+        return is.copy().splitStack(num);
+    }
+    private ItemStack getDropsIngredient (Random random, ItemStack ingredient)
+    {
+    	addDrops();
+        int sc;
+        ItemStack is;
+        int tries = 0;
+        while (true)
+        {
+            sc = getNextInt(random, 0, drops.size() - 1);
+            is = drops.get(sc);
+
+            if (is != ingredient || is.getItemDamage() != ingredient.getItemDamage())
+                break;
+
+            tries++;
+            if (tries == 5)
+                return null;
+        }
+        int num = getNextInt(random, 0, Math.min(is.stackSize, max - ingredient.stackSize));
+        return is.copy().splitStack(num);
+    }
+    private ItemStack getMatIngredient (Random random, ItemStack ingredient)
+    {
+    	addMaterials();
+        int sc;
+        ItemStack is;
+        int tries = 0;
+        while (true)
+        {
+            sc = getNextInt(random, 0, mat.size() - 1);
+            is = mat.get(sc);
+
+            if (is != ingredient || is.getItemDamage() != ingredient.getItemDamage())
+                break;
+
+            tries++;
+            if (tries == 5)
+                return null;
+        }
+        int num = getNextInt(random, 0, Math.min(is.stackSize, max - ingredient.stackSize));
+        return is.copy().splitStack(num);
+    }
+    private ItemStack getFarmerIngredient (Random random, int num)
+    {
+ //       int sc = getNextInt(random, 0, foods.size() - 1);
+        ItemStack item = foods.get(random.nextInt(5));
+        return item.copy().splitStack(Math.min(num, item.stackSize));
+    }
+    private ItemStack getToolsIngredient (Random random, int num)
+    {
+        int sc = getNextInt(random, 0, tools.size() - 1);
+        ItemStack item = tools.get(random.nextInt(5));
+        return item.copy().splitStack(Math.min(num, item.stackSize));
+    }
+    private ItemStack getArmorIngredient (Random random, int num)
+    {
+        int sc = getNextInt(random, 0, arm.size() - 1);
+        ItemStack item = arm.get(random.nextInt(5));
+        return item.copy().splitStack(Math.min(num, item.stackSize));
+    }
+    private ItemStack getDropsIngredient (Random random, int num)
+    {
+        int sc = getNextInt(random, 0, drops.size() - 1);
+        ItemStack item = drops.get(random.nextInt(5));
+        return item.copy().splitStack(Math.min(num, item.stackSize));
+    }
+    private ItemStack getMatIngredient (Random random, int num)
+    {
+        int sc = getNextInt(random, 0, mat.size() - 1);
+        ItemStack item = mat.get(random.nextInt(5));
+        return item.copy().splitStack(Math.min(num, item.stackSize));
+    }
+    private int getNextInt (Random random, int min, int max)
+    {
+        return random.nextInt(Math.max(1, (max - min) + 1)) + min;
+    }
+
+	
+	public void addFood() {
+		foods.add(bread);
+		foods.add(beefs);
+		foods.add(baked);
+		foods.add(apples);
+		foods.add(cake);
+		foods.add(carrot);
+		foods.add(chicken);
+		foods.add(cookedBeef);
+		foods.add(cookedChicken);
+		foods.add(cookedFish);
+		foods.add(cookedPorkchops);
+		foods.add(cookies);
+		foods.add(fish);
+		foods.add(melonslices);
+		foods.add(mushroomStew);
+		foods.add(porkchops);
+		foods.add(potatoes);
+		foods.add(pumpkinpie);
+	}
+	public void addTools() {
+		tools.add(arrows);
+		tools.add(woodAxe);
+		tools.add(woodHoe);
+		tools.add(woodPick);
+		tools.add(woodSpade);
+		tools.add(woodSword);
+		tools.add(stoneAxe);
+		tools.add(stoneHoe);
+		tools.add(stonePick);
+		tools.add(stoneSpade);
+		tools.add(stoneSword);
+		tools.add(ironAxe);
+		tools.add(ironHoe);
+		tools.add(ironPick);
+		tools.add(ironSpade);
+		tools.add(ironSword);
+		tools.add(diamondAxe);
+		tools.add(diamondHoe);
+		tools.add(diamondPick);
+		tools.add(diamondSpade);
+		tools.add(diamondSword);
+	}
+	public void addArmor() {
+		arm.add(leatherBoots);
+		arm.add(leatherChest);
+		arm.add(leatherHelm);
+		arm.add(leatherLegs);
+		arm.add(ironBoots);
+		arm.add(ironChest);
+		arm.add(ironHelm);
+		arm.add(ironLegs);
+		arm.add(diamondBoots);
+		arm.add(diamondChest);
+		arm.add(diamondHelm);
+		arm.add(diamondLegs);
+		arm.add(chainBoots);
+		arm.add(chainChest);
+		arm.add(chainHelm);
+		arm.add(chainLegs);
+	}
+	public void addDrops() {
+		drops.add(rottenFlesh);
+		drops.add(string);
+		drops.add(spiderEyes);
+		drops.add(ender);
+		drops.add(gunpowder);
+		drops.add(bones);
+		drops.add(leatherDrop);
+		drops.add(blazeRod);
+		drops.add(blazePowder);
+		drops.add(magma);
+		drops.add(witherBone);
+		drops.add(witherSkull);
+		drops.add(neatherStar);
+	}
+	public void addMaterials() {
+		mat.add(diamonds);
+		mat.add(iron);
+		mat.add(gold);
+		mat.add(emeralds);
+		mat.add(coal);
+		mat.add(redstone);
+		mat.add(glowstonedust);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+}

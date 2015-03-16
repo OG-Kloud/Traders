@@ -1,0 +1,5 @@
+package net.kloudspace.trades.event.handlers;
+
+public class KloudTrades {
+
+}

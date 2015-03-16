@@ -1,0 +1,21 @@
+package net.kloudspace.trades.util;
+
+import java.util.Collection;
+import java.util.Map;
+
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+
+public class CostMap {
+	public static Map<Item, Integer>  stacks;
+	
+	public CostMap() {
+		stacks.put(Items.apple, 20);
+	}
+	
+	public static int getCost(Item item) {
+		int c = stacks.get(item).intValue();
+		return c;
+	}
+
+}

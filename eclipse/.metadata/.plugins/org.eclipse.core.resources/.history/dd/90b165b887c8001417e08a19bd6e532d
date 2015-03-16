@@ -1,0 +1,17 @@
+package net.kloudspace.trades.item;
+
+import net.kloudspace.trades.item.itemclasses.ItemCoin;
+
+public class Items {
+	
+	public static Item itemCoin;
+	public static Item itemCoin2;
+	public static Item itemCoin3;
+	public static Item itemCoin4;
+	public static Item itemCoin5;
+	
+	public void Load() {
+		itemCoin = new ItemCoin();
+	}
+
+}

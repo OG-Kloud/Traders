@@ -1,0 +1,54 @@
+package net.kloudspace.trades.event.handlers;
+
+import static net.kloudspace.trades.util.Stacks.chainBoots;
+import static net.kloudspace.trades.util.Stacks.chainChest;
+import static net.kloudspace.trades.util.Stacks.chainHelm;
+import static net.kloudspace.trades.util.Stacks.chainLegs;
+import static net.kloudspace.trades.util.Stacks.diamondBoots;
+import static net.kloudspace.trades.util.Stacks.diamondChest;
+import static net.kloudspace.trades.util.Stacks.diamondHelm;
+import static net.kloudspace.trades.util.Stacks.diamondLegs;
+import static net.kloudspace.trades.util.Stacks.ironBoots;
+import static net.kloudspace.trades.util.Stacks.ironChest;
+import static net.kloudspace.trades.util.Stacks.ironHelm;
+import static net.kloudspace.trades.util.Stacks.ironLegs;
+import static net.kloudspace.trades.util.Stacks.leatherBoots;
+import static net.kloudspace.trades.util.Stacks.leatherChest;
+import static net.kloudspace.trades.util.Stacks.leatherHelm;
+import static net.kloudspace.trades.util.Stacks.leatherLegs;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import net.minecraft.item.ItemStack;
+
+public class KloudArmor {
+	
+	private final List<ItemStack> arm = new ArrayList<ItemStack>();
+
+	
+	public KloudArmor() {
+		super();
+		addArmor();
+	}
+	
+	public void addArmor() {
+		arm.add(leatherBoots);
+		arm.add(leatherChest);
+		arm.add(leatherHelm);
+		arm.add(leatherLegs);
+		arm.add(ironBoots);
+		arm.add(ironChest);
+		arm.add(ironHelm);
+		arm.add(ironLegs);
+		arm.add(diamondBoots);
+		arm.add(diamondChest);
+		arm.add(diamondHelm);
+		arm.add(diamondLegs);
+		arm.add(chainBoots);
+		arm.add(chainChest);
+		arm.add(chainHelm);
+		arm.add(chainLegs);
+	}
+
+}

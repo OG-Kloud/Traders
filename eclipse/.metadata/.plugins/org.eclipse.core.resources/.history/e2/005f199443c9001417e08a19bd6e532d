@@ -1,0 +1,67 @@
+package net.kloudspace.trades.util;
+
+import net.kloudspace.trades.version.VersionChecker;
+import net.minecraft.util.ResourceLocation;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import cpw.mods.fml.common.Loader;
+
+public class Reference {
+	private static final String MINECRAFT = "minecraft";
+	
+	public static final String MODID = "kloudspacetrader";
+	public static final String NAME = "Trader";
+	public static final String VERSION = "1.7.10-1";
+	public static final String CLIENT = "net.kloudspace.trades.client.ClientProxy";
+	public static final String COMMON = "net.kloudspace.trades.common.CommonProxy";
+	
+	private static final ResourceLocation farmer = new ResourceLocation(MINECRAFT, "textures/entity/villager/farmer.png");
+	private static final ResourceLocation librarian = new ResourceLocation(MINECRAFT, "textures/entity/villager/librarian.png");
+	private static final ResourceLocation priest = new ResourceLocation(MINECRAFT, "textures/entity/villager/priest.png");
+	private static final ResourceLocation blacksmith = new ResourceLocation(MINECRAFT, "textures/entity/villager/smith.png");
+	private static final ResourceLocation butcher = new ResourceLocation(MINECRAFT, "textures/entity/villager/butcher.png");
+	private static final ResourceLocation choco = new ResourceLocation(MINECRAFT, "texture/entity/villager/choco.png");
+    private static final ResourceLocation villagerTextures = new ResourceLocation("textures/entity/villager/villager.png");
+    public static boolean areWeAlone = false;
+    
+    private static Logger logger = LogManager.getLogger(MODID.toUpperCase());
+    
+	public static VersionChecker versionChecker;
+	private static boolean haveWarned;
+	
+	public static boolean getWarningTime() {
+		return haveWarned;
+	}
+	public static void setWarningMsg() {
+		haveWarned = true;
+	}
+    
+    public static ResourceLocation getVillager(int i) {
+		if(i == 6) { return farmer; }
+		else if(i == 7) {return librarian; }
+		else if(i == 8) { return priest; }
+		else if(i == 9) { return blacksmith; }
+		else if(i == 10) { return butcher; }
+		else
+		return villagerTextures;
+	}
+    public static Logger getLog() {
+    	return logger;
+    }
+    public static Logger createLog(Class clasz) {
+    	return logger = LogManager.getLogger(clasz);
+    }
+    public static boolean lonlyCheck() {
+    	if(Loader.isModLoaded("Backpack")) {
+    		areWeAlone = true;
+    	}
+    	if(Loader.isModLoaded("chococraft")) {
+    		areWeAlone = true;
+    	}
+    	return areWeAlone;
+    }
+}
+
+

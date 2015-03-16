@@ -1,0 +1,5 @@
+package net.kloudspace.trades.entity;
+
+public class NewVillager {
+
+}

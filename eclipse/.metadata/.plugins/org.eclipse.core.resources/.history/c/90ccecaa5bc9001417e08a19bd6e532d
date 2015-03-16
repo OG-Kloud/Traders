@@ -1,0 +1,54 @@
+package net.kloudspace.trades.replacers;
+
+import net.kloudspace.trades.event.handlers.KloudTrades;
+import net.kloudspace.trades.event.handlers.TradeHandler;
+import net.kloudspace.trades.util.Reference;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.registry.VillagerRegistry;
+
+public class VillagerReplacer {
+	
+	public static void call() {
+		 VillagerRegistry.instance().registerVillagerId(6);
+		 VillagerRegistry.instance().registerVillagerId(7);
+		 VillagerRegistry.instance().registerVillagerId(8);
+		 VillagerRegistry.instance().registerVillagerId(9);
+		 VillagerRegistry.instance().registerVillagerId(10);
+//		 VillagerRegistry.instance().registerVillagerId(11);
+				
+		 VillagerRegistry.instance().registerVillageTradeHandler(6, new TradeHandler());
+		 VillagerRegistry.instance().registerVillageTradeHandler(7, new TradeHandler());
+		 VillagerRegistry.instance().registerVillageTradeHandler(8, new TradeHandler());
+		 VillagerRegistry.instance().registerVillageTradeHandler(9, new TradeHandler());
+		 VillagerRegistry.instance().registerVillageTradeHandler(10, new TradeHandler());
+//		 VillagerRegistry.instance().registerVillageTradeHandler(11, new TradeHandler());
+		 
+		 VillagerRegistry.instance().registerVillagerSkin(6, Reference.getVillager(6));
+		 VillagerRegistry.instance().registerVillagerSkin(7, Reference.getVillager(7));
+		 VillagerRegistry.instance().registerVillagerSkin(8, Reference.getVillager(8));
+		 VillagerRegistry.instance().registerVillagerSkin(9, Reference.getVillager(9));
+		 VillagerRegistry.instance().registerVillagerSkin(10, Reference.getVillager(10));
+	}
+	
+	@SubscribeEvent
+	public void replaceVanillaVillagers(EntityJoinWorldEvent event){
+	    if (event.entity instanceof EntityVillager && ((EntityVillager)event.entity).getProfession() == 0){
+	        ((EntityVillager)event.entity).setProfession(6);
+	    }
+	    if (event.entity instanceof EntityVillager && ((EntityVillager)event.entity).getProfession() == 1) {
+	    	((EntityVillager)event.entity).setProfession(7);
+	    }
+	    if(event.entity instanceof EntityVillager && ((EntityVillager)event.entity).getProfession() == 2) {
+	    	((EntityVillager)event.entity).setProfession(8);
+	    }
+	    if(event.entity instanceof EntityVillager && ((EntityVillager)event.entity).getProfession() == 3) {
+	    	((EntityVillager)event.entity).setProfession(9);
+	    }
+	    if(event.entity instanceof EntityVillager && ((EntityVillager)event.entity).getProfession() == 4) {
+	    	((EntityVillager)event.entity).setProfession(10);
+	    }
+	    
+	}
+}

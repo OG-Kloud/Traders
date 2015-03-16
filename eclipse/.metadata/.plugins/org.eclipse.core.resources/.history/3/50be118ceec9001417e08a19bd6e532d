@@ -1,0 +1,62 @@
+package net.kloudspace.trades.event.handlers;
+
+import static net.kloudspace.trades.util.Stacks.arrows;
+import static net.kloudspace.trades.util.Stacks.diamondAxe;
+import static net.kloudspace.trades.util.Stacks.diamondHoe;
+import static net.kloudspace.trades.util.Stacks.diamondPick;
+import static net.kloudspace.trades.util.Stacks.diamondSpade;
+import static net.kloudspace.trades.util.Stacks.diamondSword;
+import static net.kloudspace.trades.util.Stacks.ironAxe;
+import static net.kloudspace.trades.util.Stacks.ironHoe;
+import static net.kloudspace.trades.util.Stacks.ironPick;
+import static net.kloudspace.trades.util.Stacks.ironSpade;
+import static net.kloudspace.trades.util.Stacks.ironSword;
+import static net.kloudspace.trades.util.Stacks.stoneAxe;
+import static net.kloudspace.trades.util.Stacks.stoneHoe;
+import static net.kloudspace.trades.util.Stacks.stonePick;
+import static net.kloudspace.trades.util.Stacks.stoneSpade;
+import static net.kloudspace.trades.util.Stacks.stoneSword;
+import static net.kloudspace.trades.util.Stacks.woodAxe;
+import static net.kloudspace.trades.util.Stacks.woodHoe;
+import static net.kloudspace.trades.util.Stacks.woodPick;
+import static net.kloudspace.trades.util.Stacks.woodSpade;
+import static net.kloudspace.trades.util.Stacks.woodSword;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import net.minecraft.item.ItemStack;
+
+public class KloudTools {
+	
+	private final List<ItemStack> tools = new ArrayList<ItemStack>();
+
+	public KloudTools() {
+		super();
+		
+	}
+	
+	public void addTools() {
+		tools.add(arrows);
+		tools.add(woodAxe);
+		tools.add(woodHoe);
+		tools.add(woodPick);
+		tools.add(woodSpade);
+		tools.add(woodSword);
+		tools.add(stoneAxe);
+		tools.add(stoneHoe);
+		tools.add(stonePick);
+		tools.add(stoneSpade);
+		tools.add(stoneSword);
+		tools.add(ironAxe);
+		tools.add(ironHoe);
+		tools.add(ironPick);
+		tools.add(ironSpade);
+		tools.add(ironSword);
+		tools.add(diamondAxe);
+		tools.add(diamondHoe);
+		tools.add(diamondPick);
+		tools.add(diamondSpade);
+		tools.add(diamondSword);
+
+}

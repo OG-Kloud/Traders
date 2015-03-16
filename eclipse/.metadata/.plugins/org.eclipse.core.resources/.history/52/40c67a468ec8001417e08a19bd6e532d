@@ -1,0 +1,13 @@
+package net.kloudspace.trades.item.itemclasses;
+
+import net.minecraft.item.Item;
+
+public class ItemCoin5 extends Item {
+	
+	public ItemCoin5()
+    {
+        super();
+        this.setUnlocalizedName("kloud.coinplatinum");
+    }
+
+}
